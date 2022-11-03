@@ -13,28 +13,33 @@ class TodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }
 
 class CreateTodoViewController: UIViewController {
     
-    @IBOutlet var confirmBtn: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }
 
 
 class PersonalInfoViewController: UIViewController {
     
-    @IBOutlet var logout: UIButton!
-    
+//    @IBOutlet var delBtn: UIButton!
+
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let newBtn = UIButton()
+        newBtn.setTitle("退出登陆x", for: .normal)
+        self.view.addSubview(newBtn)
+    }
+    
+    private func handleLogout(){
+
+//        delBtn.frame =
+//        self.view.addSubview(delBtn)
     }
 }
 
