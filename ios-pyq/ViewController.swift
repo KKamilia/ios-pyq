@@ -7,13 +7,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class TodoViewController: UIViewController {
+    
+    @IBOutlet var plusBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
+
+class CreateTodoViewController: UIViewController {
+    
+    @IBOutlet var confirmBtn: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+}
+
+
+class PersonalInfoViewController: UIViewController {
+    
+    @IBOutlet var logout: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+}
+
 
