@@ -9,16 +9,14 @@ import UIKit
 
 class TodoViewController: UIViewController {
     
-    // data source for todo list
-    let todo = ["Study", "Work","Sleep","Play"]
-    
+    //todo: add datasource automatically
+    let todoItem:[String] = ["Study", "Work","Sleep","Play"]
     
     @IBOutlet var todoList : UITableView!
     @IBOutlet var plusBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //todo: add a table
         configTableView()
         
     }
@@ -30,21 +28,30 @@ class TodoViewController: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        //         todo: add datasource
         tableView.dataSource = self
         
     }
     
 }
 extension TodoViewController:UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return todoItem.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        
+        
+        cell.textLabel?.text = "\(indexPath.row+1). \(todoItem[indexPath.row])"
+        
+//        for i in (0..<todoItem.count){
+//            cell.textLabel?.text = "\(indexPath.row)\(todoItem[i])"
+//            print(i)
+//        }
+        return cell
     }
 }
 
@@ -55,7 +62,7 @@ class CreateTodoViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 }
 
