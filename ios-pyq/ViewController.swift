@@ -69,6 +69,8 @@ class CreateTodoViewController: UIViewController {
 
 class PersonalInfoViewController: UIViewController {
     
+    @IBOutlet var avatar : UIImageView!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()

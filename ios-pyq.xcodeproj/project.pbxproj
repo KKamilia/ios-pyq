@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		598A7E5029150B9A008CCA6C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598A7E4F29150B9A008CCA6C /* StorageManager.swift */; };
 		59C608FF2912D62A0035DCC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C608FE2912D62A0035DCC2 /* AppDelegate.swift */; };
 		59C609012912D62A0035DCC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C609002912D62A0035DCC2 /* SceneDelegate.swift */; };
 		59C609032912D62A0035DCC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C609022912D62A0035DCC2 /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		598A7E4F29150B9A008CCA6C /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StorageManager.swift; path = ../../TodoTemplate/Todo/StorageManager.swift; sourceTree = "<group>"; };
 		59C608FB2912D62A0035DCC2 /* ios-pyq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-pyq.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59C608FE2912D62A0035DCC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59C609002912D62A0035DCC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				59C609072912D62C0035DCC2 /* Assets.xcassets */,
 				59C609092912D62C0035DCC2 /* LaunchScreen.storyboard */,
 				59C6090C2912D62C0035DCC2 /* Info.plist */,
+				598A7E4F29150B9A008CCA6C /* StorageManager.swift */,
 			);
 			path = "ios-pyq";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				59C609032912D62A0035DCC2 /* ViewController.swift in Sources */,
 				59C608FF2912D62A0035DCC2 /* AppDelegate.swift in Sources */,
 				59C609012912D62A0035DCC2 /* SceneDelegate.swift in Sources */,
+				598A7E5029150B9A008CCA6C /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
