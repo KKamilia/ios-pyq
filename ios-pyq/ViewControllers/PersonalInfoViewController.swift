@@ -6,20 +6,26 @@
 //
 
 import UIKit
-class PersonalInfoViewController: UIViewController {
+class PersonalInfoViewController: UIViewController, UITabBarDelegate {
     
     @IBOutlet var avatar: UIImageView!
     
+    private let usernameText = "何猪猪"
+    
+    // color
     let logoutBackgroundColor = UIColor(red: 71/255, green: 161/255, blue: 173/255, alpha: 1)
-    let usernameTextColor = UIColor(red: 200/255, green: 255/255, blue: 255/255, alpha: 1)
+    let usernameTextColor = UIColor(red: 0.00, green: 0.30, blue: 0.81, alpha: 1.00)
     
     lazy var logoutBtn: UIButton = {
         let buttonX = 16.0
         let buttonHeight = 48.0
-        let navigateBar = 50.0
+        let navigateBar = tabBarController!.tabBar.frame.size.height
         let buttonY = view.frame.height - buttonHeight - 16.0 - view.safeAreaInsets.bottom - navigateBar
         let buttonWidth = view.frame.width - 16 * 2
-        let button = UIButton(frame: CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight))
+        let button = UIButton(frame: CGRect(x: buttonX,
+                                            y: buttonY,
+                                            width: buttonWidth,
+                                            height: buttonHeight))
         button.backgroundColor = logoutBackgroundColor
         button.setTitle("退出登陆", for: .normal)
         button.layer.cornerRadius = 1.5
@@ -29,7 +35,7 @@ class PersonalInfoViewController: UIViewController {
     
     lazy var username: UILabel = {
         var label: UILabel = UILabel()
-        label.text = "何猪猪"
+        label.text = usernameText
         label.textColor = usernameTextColor
         return label
     }()
@@ -43,7 +49,7 @@ class PersonalInfoViewController: UIViewController {
         view.addSubview(username)
     }
     
-    
+    //todo: refactor
     func autoLayoutAvatar(){
         avatar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -52,15 +58,11 @@ class PersonalInfoViewController: UIViewController {
             avatar.widthAnchor.constraint(equalTo: view.widthAnchor,multiplier:0.8)
         ])
         
-        let usernameSafeDistance = avatar.frame.height + 10
-        username.frame = CGRect(x: view.frame.size.width/2, y: view.frame.height/2, width: view.frame.width/2,height:usernameSafeDistance)
-        
-//        username.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            username.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            username.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            username.widthAnchor.constraint(equalTo:view.widthAnchor,multiplier: 0.8)
-//        ])
+        let usernameSafeDistance = avatar.frame.height + 20
+        username.frame = CGRect(x: view.frame.size.width/2,
+                                y: view.frame.height/2,
+                                width: avatar.frame.width,
+                                height:usernameSafeDistance)
     }
     
     func setUpUI(){
