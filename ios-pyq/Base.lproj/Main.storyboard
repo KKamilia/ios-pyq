@@ -27,10 +27,10 @@
                     <navigationItem key="navigationItem" title="今日待办" id="pnf-fh-Ayn">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="nM7-Sf-95s">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="2Ds-KM-aQU">
-                                <rect key="frame" x="327" y="4.6666666666666679" width="47" height="35"/>
+                                <rect key="frame" x="324.33333333333331" y="4.6666666666666679" width="49.666666666666686" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title=""/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system" title=""/>
                                 <connections>
                                     <segue destination="vbq-oF-IjA" kind="show" id="uSj-QB-1sJ"/>
                                 </connections>
@@ -95,7 +95,7 @@
                                 <rect key="frame" x="169" y="333" width="52" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0090141951546612916" green="0.013046020331354718" blue="0.070033909119281534" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -173,7 +173,7 @@
         <image name="download" width="137.5" height="109.5"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

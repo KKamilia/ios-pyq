@@ -11,7 +11,7 @@ class PersonalInfoViewController: UIViewController {
     @IBOutlet var avatar: UIImageView!
     
     let logoutBackgroundColor = UIColor(red: 71/255, green: 161/255, blue: 173/255, alpha: 1)
-    let usernameTextColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 102/255)
+    let usernameTextColor = UIColor(red: 200/255, green: 255/255, blue: 255/255, alpha: 1)
     
     lazy var logoutBtn: UIButton = {
         let buttonX = 16.0
@@ -51,6 +51,9 @@ class PersonalInfoViewController: UIViewController {
             avatar.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             avatar.widthAnchor.constraint(equalTo: view.widthAnchor,multiplier:0.8)
         ])
+        
+        let usernameSafeDistance = avatar.frame.height + 10
+        username.frame = CGRect(x: view.frame.size.width/2, y: view.frame.height/2, width: view.frame.width/2,height:usernameSafeDistance)
         
 //        username.translatesAutoresizingMaskIntoConstraints = false
 //        NSLayoutConstraint.activate([
