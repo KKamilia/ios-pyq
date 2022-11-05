@@ -83,14 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		59C2D4F329165F2500BB67DA /* View */ = {
+		59C2D4F329165F2500BB67DA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				59C609022912D62A0035DCC2 /* TodoViewController.swift */,
 				59C2D4FD2916620900BB67DA /* CreateTodoViewController.swift */,
 				59C2D4FF2916628400BB67DA /* PersonalInfoViewController.swift */,
 			);
-			path = View;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		59C2D4F62916610D00BB67DA /* Model */ = {
@@ -134,7 +134,7 @@
 			children = (
 				59C2D4F62916610D00BB67DA /* Model */,
 				59C2D4F82916612C00BB67DA /* ViewModel */,
-				59C2D4F329165F2500BB67DA /* View */,
+				59C2D4F329165F2500BB67DA /* ViewControllers */,
 				59C608FE2912D62A0035DCC2 /* AppDelegate.swift */,
 				59C609002912D62A0035DCC2 /* SceneDelegate.swift */,
 				59C609072912D62C0035DCC2 /* Assets.xcassets */,

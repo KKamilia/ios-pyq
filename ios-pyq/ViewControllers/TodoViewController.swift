@@ -10,7 +10,8 @@ import UIKit
 
 class TodoViewController: UIViewController {
     
-    //todo: add datasource automatically
+    static let CustomCellIdentifier = "CustomCell"
+    
     let todoItem:[String] = ["Study", "Work","Sleep","Play"]
     
     @IBOutlet var todoList: UITableView!
@@ -27,7 +28,7 @@ class TodoViewController: UIViewController {
         tableView.frame = CGRect(origin: .zero, size:view.frame.size)
         view.addSubview(tableView)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TodoViewController.CustomCellIdentifier)
         
         tableView.dataSource = self
         
@@ -43,7 +44,7 @@ extension TodoViewController:UITableViewDataSource {
         return todoItem.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: TodoViewController.CustomCellIdentifier)!
         
         
         cell.textLabel?.text = "\(indexPath.row+1). \(todoItem[indexPath.row])"
