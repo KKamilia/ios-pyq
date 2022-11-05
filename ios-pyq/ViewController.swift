@@ -12,7 +12,7 @@ class TodoViewController: UIViewController {
     //todo: add datasource automatically
     let todoItem:[String] = ["Study", "Work","Sleep","Play"]
     
-    @IBOutlet var todoList : UITableView!
+    @IBOutlet var todoList: UITableView!
     @IBOutlet var plusBtn: UIButton!
     
     override func viewDidLoad() {
@@ -23,8 +23,8 @@ class TodoViewController: UIViewController {
     
     func configTableView(){
         let tableView = UITableView()
-        tableView.frame = CGRect(origin: .zero, size:self.view.frame.size)
-        self.view.addSubview(tableView)
+        tableView.frame = CGRect(origin: .zero, size:view.frame.size)
+        view.addSubview(tableView)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
@@ -47,10 +47,6 @@ extension TodoViewController:UITableViewDataSource {
         
         cell.textLabel?.text = "\(indexPath.row+1). \(todoItem[indexPath.row])"
         
-//        for i in (0..<todoItem.count){
-//            cell.textLabel?.text = "\(indexPath.row)\(todoItem[i])"
-//            print(i)
-//        }
         return cell
     }
 }
@@ -69,33 +65,43 @@ class CreateTodoViewController: UIViewController {
 
 class PersonalInfoViewController: UIViewController {
     
-    @IBOutlet var avatar : UIImageView!
+    @IBOutlet var avatar: UIImageView!
+    
+    let logoutBackgroundColor = UIColor(red: 71/255, green: 161/255, blue: 173/255, alpha: 1)
+    
+    lazy var logoutBtn: UIButton = {
+        let buttonX = 16.0
+        let buttonHeight = 48.0
+        let buttonY = view.frame.height - buttonHeight - 16.0 - view.safeAreaInsets.bottom
+        let buttonWidth = view.frame.width - 16 * 2
+        let button = UIButton(frame: CGRect(x: buttonX, y: buttonY, width: buttonWidth, height: buttonHeight))
+        button.backgroundColor = logoutBackgroundColor
+        button.setTitle("退出登陆", for: .normal)
+        button.layer.cornerRadius = 1.5
+
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        let logoutBtn = UIButton()
-        
-        logoutBtn.backgroundColor = UIColor(red: 17.0/255.0, green: 119.0/255.0, blue: 151.0/255.0, alpha: 1.0)
-        logoutBtn.setTitle("退出登陆", for: .normal)
-        logoutBtn.setTitleColor(UIColor .white, for: .normal)
-        
-        //        logoutBtn.frame = CGRectMake(self.view.frame.width * 0.05,
-        //                                     self.view.frame.height * 0.8,
-        //                                     self.view.frame.width * 0.9,
-        //                                     self.view.frame.height * 0.05)
-        
-        self.view.addSubview(logoutBtn)
-        
-        //contriant - position
-        logoutBtn.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            logoutBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            logoutBtn.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            logoutBtn.widthAnchor.constraint(equalTo: self.view.widthAnchor,multiplier:0.8)
-        ])
-        logoutBtn.layer.cornerRadius = 1.5
-        
+        super.viewWillLayoutSubviews()
+        setUpUI()
+        autoLayoutAvatar()
     }
+    
+    func autoLayoutAvatar(){
+        avatar.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    avatar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    avatar.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                    avatar.widthAnchor.constraint(equalTo: view.widthAnchor,multiplier:0.8)
+                ])
+    }
+    
+    func setUpUI(){
+        view.addSubview(logoutBtn)
+    }
+    
 }

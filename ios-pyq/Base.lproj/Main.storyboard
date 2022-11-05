@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVE-R5-XGo">
-                                <rect key="frame" x="-5" y="736" width="390" height="44"/>
+                                <rect key="frame" x="-7" y="736" width="391" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
                         </subviews>
@@ -104,7 +104,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="个人信息" id="anC-yV-iGf"/>
                     <connections>
-                        <outlet property="avater" destination="0lc-4R-XtV" id="IKR-pN-0gI"/>
+                        <outlet property="avatar" destination="0lc-4R-XtV" id="wzq-zd-Ai4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqs-1c-abG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
