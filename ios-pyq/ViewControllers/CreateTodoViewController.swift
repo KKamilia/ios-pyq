@@ -30,7 +30,6 @@ class CreateTodoViewController: UIViewController, UITextFieldDelegate {
     
     func inputLayout(){
         textField.placeholder = inputBarText
-//        textField.keyboardTyp =
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -39,6 +38,7 @@ class CreateTodoViewController: UIViewController, UITextFieldDelegate {
             textField.widthAnchor.constraint(equalTo:view.widthAnchor,multiplier:0.5)
         ])
         
+//        textField.contentVerticalAlignment = .center
         textField.borderStyle = UITextField.BorderStyle.roundedRect
 
         
