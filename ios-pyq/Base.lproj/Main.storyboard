@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVE-R5-XGo">
-                                <rect key="frame" x="-8" y="736" width="391" height="44"/>
+                                <rect key="frame" x="-10" y="736" width="391" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
                         </subviews>
@@ -48,12 +48,12 @@
         <!--新增代办-->
         <scene sceneID="YHi-41-vCq">
             <objects>
-                <viewController id="vbq-oF-IjA" customClass="CreateTodoViewController" sceneMemberID="viewController">
+                <viewController id="vbq-oF-IjA" customClass="CreateTodoViewController" customModule="ios_pyq" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z5x-CT-Q01">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入" borderStyle="roundedRect" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="jPF-h6-jIN">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="jPF-h6-jIN">
                                 <rect key="frame" x="61" y="297" width="275" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -61,12 +61,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Oj-nz-8XC">
-                                <rect key="frame" x="154" y="340" width="59" height="35"/>
+                                <rect key="frame" x="156" y="341" width="59" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="确认" cornerStyle="medium" titleAlignment="center">
+                                <buttonConfiguration key="configuration" style="tinted" title="确认" cornerStyle="medium">
                                     <backgroundConfiguration key="background"/>
-                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
                                 </buttonConfiguration>
                             </button>
                         </subviews>
@@ -74,6 +73,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="新增代办" id="Efr-9l-ZHN"/>
+                    <connections>
+                        <outlet property="confirmBtn" destination="0Oj-nz-8XC" id="uNX-Lh-IlN"/>
+                        <outlet property="inputBar" destination="jPF-h6-jIN" id="iM7-l1-YaC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDD-nc-dD5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

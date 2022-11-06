@@ -16,6 +16,7 @@ class PersonalInfoViewController: UIViewController, UITabBarDelegate {
     let logoutBackgroundColor = UIColor(red: 71/255, green: 161/255, blue: 173/255, alpha: 1)
     let usernameTextColor = UIColor(red: 0.00, green: 0.30, blue: 0.81, alpha: 1.00)
     
+    // Btn
     lazy var logoutBtn: UIButton = {
         let buttonX = 16.0
         let buttonHeight = 48.0
@@ -42,31 +43,31 @@ class PersonalInfoViewController: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         
-        //        super.viewDidLoad()
-        super.viewWillLayoutSubviews()
+        super.viewDidLoad()
+        
         setUpUI()
         autoLayoutAvatar()
-        view.addSubview(username)
     }
     
-    //todo: refactor
+    //todo: refactor -- layout
     func autoLayoutAvatar(){
         avatar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             avatar.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            avatar.widthAnchor.constraint(equalTo: view.widthAnchor,multiplier:0.8)
+            avatar.widthAnchor.constraint(equalTo:view.widthAnchor,multiplier:0.5)
         ])
         
         let usernameSafeDistance = avatar.frame.height + 20
-        username.frame = CGRect(x: view.frame.size.width/2,
+        username.frame = CGRect(x: view.frame.size.width/2 - avatar.frame.width/8,
                                 y: view.frame.height/2,
-                                width: avatar.frame.width,
+                                width: avatar.frame.width/2,
                                 height:usernameSafeDistance)
     }
     
     func setUpUI(){
         view.addSubview(logoutBtn)
+        view.addSubview(username)
     }
     
 }

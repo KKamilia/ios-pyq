@@ -9,6 +9,7 @@
 import UIKit
 
 class TodoViewController: UIViewController {
+    var message: String?
     
     static let CustomCellIdentifier = "CustomCell"
     
@@ -52,5 +53,3 @@ extension TodoViewController:UITableViewDataSource {
         return cell
     }
 }
-
-
