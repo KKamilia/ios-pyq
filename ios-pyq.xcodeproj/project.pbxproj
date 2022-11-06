@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		598A7E5229150D2F008CCA6C /* screenshot in Resources */ = {isa = PBXBuildFile; fileRef = 598A7E5129150D2F008CCA6C /* screenshot */; };
+		59BE45E42917F94D00FF338A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2D4FA2916617F00BB67DA /* StorageManager.swift */; };
 		59C2D4FE2916620900BB67DA /* CreateTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2D4FD2916620900BB67DA /* CreateTodoViewController.swift */; };
 		59C2D5002916628400BB67DA /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2D4FF2916628400BB67DA /* PersonalInfoViewController.swift */; };
 		59C608FF2912D62A0035DCC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C608FE2912D62A0035DCC2 /* AppDelegate.swift */; };
@@ -86,6 +87,7 @@
 		59C2D4F329165F2500BB67DA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				59C2D4FA2916617F00BB67DA /* StorageManager.swift */,
 				59C609022912D62A0035DCC2 /* TodoViewController.swift */,
 				59C2D4FD2916620900BB67DA /* CreateTodoViewController.swift */,
 				59C2D4FF2916628400BB67DA /* PersonalInfoViewController.swift */,
@@ -103,7 +105,6 @@
 		59C2D4F82916612C00BB67DA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				59C2D4FA2916617F00BB67DA /* StorageManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -297,6 +298,7 @@
 				59C609032912D62A0035DCC2 /* TodoViewController.swift in Sources */,
 				59C2D4FE2916620900BB67DA /* CreateTodoViewController.swift in Sources */,
 				59C2D5002916628400BB67DA /* PersonalInfoViewController.swift in Sources */,
+				59BE45E42917F94D00FF338A /* StorageManager.swift in Sources */,
 				59C608FF2912D62A0035DCC2 /* AppDelegate.swift in Sources */,
 				59C609012912D62A0035DCC2 /* SceneDelegate.swift in Sources */,
 			);

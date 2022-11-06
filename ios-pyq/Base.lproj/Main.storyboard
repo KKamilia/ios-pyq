@@ -61,7 +61,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Oj-nz-8XC">
-                                <rect key="frame" x="156" y="341" width="59" height="35"/>
+                                <rect key="frame" x="157" y="405" width="59" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="确认" cornerStyle="medium">
@@ -75,7 +75,7 @@
                     <navigationItem key="navigationItem" title="新增代办" id="Efr-9l-ZHN"/>
                     <connections>
                         <outlet property="confirmBtn" destination="0Oj-nz-8XC" id="uNX-Lh-IlN"/>
-                        <outlet property="inputBar" destination="jPF-h6-jIN" id="iM7-l1-YaC"/>
+                        <outlet property="textField" destination="jPF-h6-jIN" id="iM7-l1-YaC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDD-nc-dD5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
