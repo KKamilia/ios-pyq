@@ -24,8 +24,9 @@ class TodoViewController: UIViewController {
     }
     
     func configTableView(){
-//        let tabBarHeight = tabBarController?.tabBar.frame.height
-//        let tableviewHeight = view.frame.height - tabBarHeight
+        //        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+        //        let tableviewHeight = view.frame.height - tabBarHeight
+        //        tableView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: tableviewHeight)
         
         tableView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: 600)
         view.addSubview(tableView)
@@ -54,7 +55,6 @@ extension TodoViewController:UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: TodoViewController.CustomCellIdentifier)!
         
         cell.textLabel?.text = "\(indexPath.row+1). \(todoItem[indexPath.row])"
-//        cell.textLabel?.text = todoItem[indexPath.row]
         
         return cell
     }
