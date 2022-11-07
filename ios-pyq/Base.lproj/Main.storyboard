@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVE-R5-XGo">
-                                <rect key="frame" x="-10" y="736" width="391" height="44"/>
+                                <rect key="frame" x="-11" y="736" width="392" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
                         </subviews>
@@ -60,21 +60,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Oj-nz-8XC">
-                                <rect key="frame" x="157" y="405" width="59" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="确认" cornerStyle="medium">
-                                    <backgroundConfiguration key="background"/>
-                                </buttonConfiguration>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oGc-F6-CmV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="新增代办" id="Efr-9l-ZHN"/>
                     <connections>
-                        <outlet property="confirmBtn" destination="0Oj-nz-8XC" id="uNX-Lh-IlN"/>
                         <outlet property="textField" destination="jPF-h6-jIN" id="iM7-l1-YaC"/>
                     </connections>
                 </viewController>

@@ -10,7 +10,6 @@ import UIKit
 class CreateTodoViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var textField: UITextField!
-    @IBOutlet var confirmBtn: UIButton!
     
     
     let inputBarText = "请输入"
@@ -19,7 +18,7 @@ class CreateTodoViewController: UIViewController, UITextFieldDelegate {
     let confirmBtnBackgroundColor = UIColor.systemBlue
     let confirmBtnTitleColor = UIColor(red: 0.00, green: 0.30, blue: 0.81, alpha: 1.00)
     
-    lazy var confirmBtb: UIButton = {
+    lazy var confirmBtn: UIButton = {
         let button = UIButton()
         button.setTitle("确认", for: .normal)
         button.backgroundColor = confirmBtnBackgroundColor
