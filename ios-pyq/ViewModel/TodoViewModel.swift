@@ -6,9 +6,9 @@
 //
 
 import Foundation
-class ListViewModel {
+class TodoViewModel {
     
-    func saveItem(_ input: String){
+    static func saveItem(_ input: String){
         StorageManager.saveTodoItem(content: input)
     }
     
@@ -16,7 +16,7 @@ class ListViewModel {
         let allList = StorageManager.getTodoList()
         var todoList: [String] = [String]()
         for(index, item) in allList.enumerated() {
-            todoList.append("\(index+1). + \(item)")
+            todoList.append("\(index+1). \(item)")
         }
         return todoList
     }
