@@ -25,7 +25,13 @@ struct StorageManager {
     defaultStand.set(todoList, forKey: TODO_LIST_KEY)
   }
     
-//    static func removeAll(){
-//        var todoList = defaultStand.stringArray(forKey: TODO_LIST_KEY) ?? []
-//    }
+    static func removeInIndex(num: Int){
+       var allList = getTodoList()
+        allList.remove(at: num)
+    }
+    
+    static func removeAll(){
+       var allList = getTodoList()
+        allList.removeAll(keepingCapacity: true)
+    }
 }
