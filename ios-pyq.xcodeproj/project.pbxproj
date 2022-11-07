@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		59113B7A2918E73D0018396E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		598A7E5129150D2F008CCA6C /* screenshot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshot; sourceTree = "<group>"; };
-		59C2D4FA2916617F00BB67DA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		59C2D4FA2916617F00BB67DA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StorageManager.swift; path = ../ViewControllers/StorageManager.swift; sourceTree = "<group>"; };
 		59C2D4FD2916620900BB67DA /* CreateTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoViewController.swift; sourceTree = "<group>"; };
 		59C2D4FF2916628400BB67DA /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		59C608FB2912D62A0035DCC2 /* ios-pyq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-pyq.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +89,6 @@
 		59C2D4F329165F2500BB67DA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				59C2D4FA2916617F00BB67DA /* StorageManager.swift */,
 				59C609022912D62A0035DCC2 /* TodoViewController.swift */,
 				59C2D4FD2916620900BB67DA /* CreateTodoViewController.swift */,
 				59C2D4FF2916628400BB67DA /* PersonalInfoViewController.swift */,
@@ -100,6 +99,7 @@
 		59C2D4F62916610D00BB67DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				59C2D4FA2916617F00BB67DA /* StorageManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

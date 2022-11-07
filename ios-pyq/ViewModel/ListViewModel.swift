@@ -6,3 +6,19 @@
 //
 
 import Foundation
+class ListViewModel {
+    
+    func saveItem(_ input: String){
+        StorageManager.saveTodoItem(content: input)
+    }
+    
+    static func fetchList() -> [String] {
+        let allList = StorageManager.getTodoList()
+        var todoList: [String] = [String]()
+        for(index, item) in allList.enumerated() {
+            todoList.append("\(index+1). + \(item)")
+        }
+        return todoList
+    }
+}
+

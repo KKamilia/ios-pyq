@@ -63,6 +63,8 @@ class CreateTodoViewController: UIViewController, UITextFieldDelegate {
     @objc
     func buttonClicked() {
         if( textField.text != ""){
+            
+            //Todo: Move to ViewModel
             StorageManager.saveTodoItem(content: textField.text ?? "")
             self.navigationController?.popToRootViewController(animated: true)
         }

@@ -11,6 +11,7 @@ import UIKit
 class TodoViewController: UIViewController {
     
     static let CustomCellIdentifier = "CustomCell"
+    private var viewModel = ListViewModel()
     
     var todoItem = StorageManager.getTodoList()
     let tableView = UITableView()
@@ -24,21 +25,24 @@ class TodoViewController: UIViewController {
     }
     
     func configTableView(){
-        //        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-        //        let tableviewHeight = view.frame.height - tabBarHeight
-        //        tableView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: tableviewHeight)
-        
-        tableView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: 600)
         view.addSubview(tableView)
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: TodoViewController.CustomCellIdentifier)
         
         tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor)
+        ])
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        todoItem = StorageManager.getTodoList()
+        
+        // Todo: move to viewModel
         tableView.reloadData()
+        todoItem = ListViewModel.fetchList()
         super.viewWillAppear(animated)
     }
 }
@@ -54,7 +58,7 @@ extension TodoViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TodoViewController.CustomCellIdentifier)!
         
-        cell.textLabel?.text = "\(indexPath.row+1). \(todoItem[indexPath.row])"
+        cell.textLabel?.text = "\(todoItem[indexPath.row])"
         
         return cell
     }
