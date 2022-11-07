@@ -9,7 +9,6 @@
 import UIKit
 
 class TodoViewController: UIViewController {
-    var message: String?
     
     static let CustomCellIdentifier = "CustomCell"
     
@@ -25,8 +24,10 @@ class TodoViewController: UIViewController {
     }
     
     func configTableView(){
-
-        tableView.frame = CGRect(origin: .zero, size:view.frame.size)
+//        let tabBarHeight = tabBarController?.tabBar.frame.height
+//        let tableviewHeight = view.frame.height - tabBarHeight
+        
+        tableView.frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: 600)
         view.addSubview(tableView)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: TodoViewController.CustomCellIdentifier)
@@ -52,8 +53,8 @@ extension TodoViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TodoViewController.CustomCellIdentifier)!
         
-        
         cell.textLabel?.text = "\(indexPath.row+1). \(todoItem[indexPath.row])"
+//        cell.textLabel?.text = todoItem[indexPath.row]
         
         return cell
     }
