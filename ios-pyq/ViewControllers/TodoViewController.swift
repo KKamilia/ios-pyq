@@ -13,7 +13,8 @@ class TodoViewController: UIViewController {
     
     static let CustomCellIdentifier = "CustomCell"
     
-    let todoItem:[String] = ["Study", "Work","Sleep","Play"]
+    var todoItem = StorageManager.getTodoList()
+    let tableView = UITableView()
     
     @IBOutlet var todoList: UITableView!
     @IBOutlet var plusBtn: UIButton!
@@ -21,11 +22,10 @@ class TodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        
     }
     
     func configTableView(){
-        let tableView = UITableView()
+
         tableView.frame = CGRect(origin: .zero, size:view.frame.size)
         view.addSubview(tableView)
         
@@ -34,8 +34,13 @@ class TodoViewController: UIViewController {
         tableView.dataSource = self
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        todoItem = StorageManager.getTodoList()
+        tableView.reloadData()
+        super.viewWillAppear(animated)
+    }
 }
+
 extension TodoViewController:UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,5 +57,4 @@ extension TodoViewController:UITableViewDataSource {
         
         return cell
     }
-
 }
