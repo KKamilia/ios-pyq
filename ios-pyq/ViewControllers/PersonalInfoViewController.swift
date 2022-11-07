@@ -18,19 +18,19 @@ class PersonalInfoViewController: UIViewController, UITabBarDelegate {
     
     // Btn
     lazy var logoutBtn: UIButton = {
-        let buttonX = 16.0
-        let buttonHeight = 48.0
-        let navigateBar = tabBarController!.tabBar.frame.size.height
-        let buttonY = view.frame.height - buttonHeight - 16.0 - view.safeAreaInsets.bottom - navigateBar
-        let buttonWidth = view.frame.width - 16 * 2
-        let button = UIButton(frame: CGRect(x: buttonX,
-                                            y: buttonY,
-                                            width: buttonWidth,
-                                            height: buttonHeight))
+        let button = UIButton()
         button.backgroundColor = logoutBackgroundColor
         button.setTitle("退出登陆", for: .normal)
-        button.layer.cornerRadius = 1.5
+        button.layer.cornerRadius = 2
+        view.addSubview(button)
         
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: 0),
+            button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 20),
+            button.widthAnchor.constraint(equalTo: view.widthAnchor,constant: -40),
+            button.heightAnchor.constraint(equalToConstant: 40)
+        ])
         return button
     }()
     
@@ -44,7 +44,6 @@ class PersonalInfoViewController: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         setUpUI()
         autoLayoutAvatar()
     }
