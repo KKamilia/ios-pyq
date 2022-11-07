@@ -11,9 +11,9 @@ import UIKit
 class TodoViewController: UIViewController {
     
     static let CustomCellIdentifier = "CustomCell"
-    private var viewModel = ListViewModel()
+    private var viewModel = TodoViewModel()
     
-    var todoItem = StorageManager.getTodoList()
+    var todoItem = TodoViewModel.fetchList()
     let tableView = UITableView()
     
     @IBOutlet var todoList: UITableView!
@@ -24,6 +24,7 @@ class TodoViewController: UIViewController {
         configTableView()
     }
     
+    //todo: table & cell move
     func configTableView(){
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: TodoViewController.CustomCellIdentifier)
@@ -41,8 +42,8 @@ class TodoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         // Todo: move to viewModel
+        todoItem = TodoViewModel.fetchList()
         tableView.reloadData()
-        todoItem = ListViewModel.fetchList()
         super.viewWillAppear(animated)
     }
 }
