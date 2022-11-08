@@ -31,13 +31,6 @@
 			remoteGlobalIDString = 59C608FA2912D62A0035DCC2;
 			remoteInfo = "ios-pyq";
 		};
-		59C6091C2912D62D0035DCC2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 59C608F32912D62A0035DCC2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 59C608FA2912D62A0035DCC2;
-			remoteInfo = "ios-pyq";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +51,6 @@
 		59C6090A2912D62C0035DCC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59C6090C2912D62C0035DCC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59C609112912D62D0035DCC2 /* ios-pyqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-pyqTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		59C6091B2912D62D0035DCC2 /* ios-pyqUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-pyqUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,13 +62,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		59C6090E2912D62D0035DCC2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		59C609182912D62D0035DCC2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -129,7 +114,6 @@
 			children = (
 				59C608FB2912D62A0035DCC2 /* ios-pyq.app */,
 				59C609112912D62D0035DCC2 /* ios-pyqTests.xctest */,
-				59C6091B2912D62D0035DCC2 /* ios-pyqUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,24 +180,6 @@
 			productReference = 59C609112912D62D0035DCC2 /* ios-pyqTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		59C6091A2912D62D0035DCC2 /* ios-pyqUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 59C6092B2912D62D0035DCC2 /* Build configuration list for PBXNativeTarget "ios-pyqUITests" */;
-			buildPhases = (
-				59C609172912D62D0035DCC2 /* Sources */,
-				59C609182912D62D0035DCC2 /* Frameworks */,
-				59C609192912D62D0035DCC2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				59C6091D2912D62D0035DCC2 /* PBXTargetDependency */,
-			);
-			name = "ios-pyqUITests";
-			productName = "ios-pyqUITests";
-			productReference = 59C6091B2912D62D0035DCC2 /* ios-pyqUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -228,10 +194,6 @@
 						CreatedOnToolsVersion = 14.0.1;
 					};
 					59C609102912D62D0035DCC2 = {
-						CreatedOnToolsVersion = 14.0.1;
-						TestTargetID = 59C608FA2912D62A0035DCC2;
-					};
-					59C6091A2912D62D0035DCC2 = {
 						CreatedOnToolsVersion = 14.0.1;
 						TestTargetID = 59C608FA2912D62A0035DCC2;
 					};
@@ -252,7 +214,6 @@
 			targets = (
 				59C608FA2912D62A0035DCC2 /* ios-pyq */,
 				59C609102912D62D0035DCC2 /* ios-pyqTests */,
-				59C6091A2912D62D0035DCC2 /* ios-pyqUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -270,13 +231,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		59C6090F2912D62D0035DCC2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		59C609192912D62D0035DCC2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -310,13 +264,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59C609172912D62D0035DCC2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -324,11 +271,6 @@
 			isa = PBXTargetDependency;
 			target = 59C608FA2912D62A0035DCC2 /* ios-pyq */;
 			targetProxy = 59C609122912D62D0035DCC2 /* PBXContainerItemProxy */;
-		};
-		59C6091D2912D62D0035DCC2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 59C608FA2912D62A0035DCC2 /* ios-pyq */;
-			targetProxy = 59C6091C2912D62D0035DCC2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -558,40 +500,6 @@
 			};
 			name = Release;
 		};
-		59C6092C2912D62D0035DCC2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tw.www.ios-pyqUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "ios-pyq";
-			};
-			name = Debug;
-		};
-		59C6092D2912D62D0035DCC2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tw.www.ios-pyqUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "ios-pyq";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -618,15 +526,6 @@
 			buildConfigurations = (
 				59C609292912D62D0035DCC2 /* Debug */,
 				59C6092A2912D62D0035DCC2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		59C6092B2912D62D0035DCC2 /* Build configuration list for PBXNativeTarget "ios-pyqUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				59C6092C2912D62D0035DCC2 /* Debug */,
-				59C6092D2912D62D0035DCC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
