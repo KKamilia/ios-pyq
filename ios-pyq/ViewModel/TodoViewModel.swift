@@ -8,11 +8,7 @@
 import Foundation
 class TodoViewModel {
     
-    static func saveItem(_ input: String){
-        StorageManager.saveTodoItem(content: input)
-    }
-    
-    static func fetchList() -> [String] {
+    func fetchList() -> [String] {
         let allList = StorageManager.getTodoList()
         var todoList: [String] = [String]()
         for(index, item) in allList.enumerated() {
@@ -21,4 +17,3 @@ class TodoViewModel {
         return todoList
     }
 }
-

@@ -11,9 +11,27 @@ import UIKit
 class TodoViewController: UIViewController {
     
     static let CustomCellIdentifier = "CustomCell"
-    private var viewModel = TodoViewModel()
     
-    var todoItem = TodoViewModel.fetchList()
+    let viewModel = TodoViewModel()
+    
+    //Question about init String
+    
+    // 1st method
+    //    var todoItem : [String]
+    //    init(todoItem: [String]) {
+    //        self.todoItem = todoItem
+    //        super.init(nibName: nil, bundle: nil)
+    //    }
+    //
+    //    required init?(coder: NSCoder) {
+    //        fatalError("init(coder:) has not been implemented")
+    //    }
+    
+    // 2nd method
+//    lazy var todoItem = viewModel.fetchList()
+    
+    var todoItem : [String] = []
+    
     let tableView = UITableView()
     
     @IBOutlet var plusBtn: UIButton!
@@ -24,7 +42,7 @@ class TodoViewController: UIViewController {
     }
     
     //todo: table & cell move
-    func configTableView(){
+    func configTableView() {
         view.addSubview(tableView)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: TodoViewController.CustomCellIdentifier)
         
@@ -39,7 +57,7 @@ class TodoViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        todoItem = TodoViewModel.fetchList()
+        todoItem = viewModel.fetchList()
         tableView.reloadData()
         super.viewWillAppear(animated)
     }
