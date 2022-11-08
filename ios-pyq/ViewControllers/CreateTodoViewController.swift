@@ -38,11 +38,11 @@ class CreateTodoViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        inputLayout()
+        textFieldLayout()
         confirmBtnLayout()
     }
     
-    func inputLayout(){
+    func textFieldLayout(){
         textField.placeholder = inputBarText
         
         textField.translatesAutoresizingMaskIntoConstraints = false
