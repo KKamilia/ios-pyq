@@ -9,9 +9,11 @@ import XCTest
 @testable import ios_pyq
 
 class TodoViewModelTest: XCTestCase {
+    
+    // Tdoo: refactor
     func testFetchTodoListWhenTodoItemIsNotEmpty() throws {
         // given
-        StorageManager.removeAll2()
+//        StorageManager.removeAll2()
         let todoViewModel = TodoViewModel()
         let createTodoViewModel = CreateTodoViewModel()
 

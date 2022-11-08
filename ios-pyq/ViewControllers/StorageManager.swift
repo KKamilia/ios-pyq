@@ -31,10 +31,6 @@ struct StorageManager {
     }
     
     static func removeAll(){
-        var allList = getTodoList()
-        allList.removeAll(keepingCapacity: true)
-    }
-    static func removeAll2(){
         defaultStand.set([], forKey: TODO_LIST_KEY)
     }
 }

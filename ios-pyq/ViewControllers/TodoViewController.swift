@@ -10,13 +10,16 @@ import UIKit
 
 class TodoViewController: UIViewController {
     
+    //Todo: check the order of declaration
+    
+    let tableView = UITableView()
+    
     static let CustomCellIdentifier = "CustomCell"
     
     let viewModel = TodoViewModel()
     
     var todoItem : [String] = []
     
-    let tableView = UITableView()
     
     @IBOutlet var plusBtn: UIButton!
     
@@ -25,12 +28,12 @@ class TodoViewController: UIViewController {
         configTableView()
     }
     
-    //todo: table & cell move
     func configTableView() {
         view.addSubview(tableView)
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TodoViewController.CustomCellIdentifier)
         
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TodoViewController.CustomCellIdentifier)
         tableView.dataSource = self
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
