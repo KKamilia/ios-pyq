@@ -10,6 +10,7 @@
 		59113B7B2918E73D0018396E /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59113B7A2918E73D0018396E /* TodoViewModel.swift */; };
 		59113B842919F39D0018396E /* TodoListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59113B832919F39D0018396E /* TodoListDataSource.swift */; };
 		59113B86291A0D5E0018396E /* CreateTodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59113B85291A0D5E0018396E /* CreateTodoViewModel.swift */; };
+		59113B88291A12730018396E /* TodoViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59113B87291A12730018396E /* TodoViewModelTest.swift */; };
 		598A7E5229150D2F008CCA6C /* screenshot in Resources */ = {isa = PBXBuildFile; fileRef = 598A7E5129150D2F008CCA6C /* screenshot */; };
 		59BE45E42917F94D00FF338A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2D4FA2916617F00BB67DA /* StorageManager.swift */; };
 		59C2D4FE2916620900BB67DA /* CreateTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C2D4FD2916620900BB67DA /* CreateTodoViewController.swift */; };
@@ -20,9 +21,6 @@
 		59C609062912D62B0035DCC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C609042912D62B0035DCC2 /* Main.storyboard */; };
 		59C609082912D62C0035DCC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59C609072912D62C0035DCC2 /* Assets.xcassets */; };
 		59C6090B2912D62C0035DCC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C609092912D62C0035DCC2 /* LaunchScreen.storyboard */; };
-		59C609162912D62D0035DCC2 /* ios_pyqTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C609152912D62D0035DCC2 /* ios_pyqTests.swift */; };
-		59C609202912D62D0035DCC2 /* ios_pyqUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C6091F2912D62D0035DCC2 /* ios_pyqUITests.swift */; };
-		59C609222912D62D0035DCC2 /* ios_pyqUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C609212912D62D0035DCC2 /* ios_pyqUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +44,7 @@
 		59113B7A2918E73D0018396E /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		59113B832919F39D0018396E /* TodoListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListDataSource.swift; sourceTree = "<group>"; };
 		59113B85291A0D5E0018396E /* CreateTodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoViewModel.swift; sourceTree = "<group>"; };
+		59113B87291A12730018396E /* TodoViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModelTest.swift; sourceTree = "<group>"; };
 		598A7E5129150D2F008CCA6C /* screenshot */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshot; sourceTree = "<group>"; };
 		59C2D4FA2916617F00BB67DA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		59C2D4FD2916620900BB67DA /* CreateTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoViewController.swift; sourceTree = "<group>"; };
@@ -59,10 +58,7 @@
 		59C6090A2912D62C0035DCC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		59C6090C2912D62C0035DCC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59C609112912D62D0035DCC2 /* ios-pyqTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-pyqTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		59C609152912D62D0035DCC2 /* ios_pyqTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_pyqTests.swift; sourceTree = "<group>"; };
 		59C6091B2912D62D0035DCC2 /* ios-pyqUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-pyqUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		59C6091F2912D62D0035DCC2 /* ios_pyqUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_pyqUITests.swift; sourceTree = "<group>"; };
-		59C609212912D62D0035DCC2 /* ios_pyqUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_pyqUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +120,6 @@
 				598A7E5129150D2F008CCA6C /* screenshot */,
 				59C608FD2912D62A0035DCC2 /* ios-pyq */,
 				59C609142912D62D0035DCC2 /* ios-pyqTests */,
-				59C6091E2912D62D0035DCC2 /* ios-pyqUITests */,
 				59C608FC2912D62A0035DCC2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -158,18 +153,9 @@
 		59C609142912D62D0035DCC2 /* ios-pyqTests */ = {
 			isa = PBXGroup;
 			children = (
-				59C609152912D62D0035DCC2 /* ios_pyqTests.swift */,
+				59113B87291A12730018396E /* TodoViewModelTest.swift */,
 			);
 			path = "ios-pyqTests";
-			sourceTree = "<group>";
-		};
-		59C6091E2912D62D0035DCC2 /* ios-pyqUITests */ = {
-			isa = PBXGroup;
-			children = (
-				59C6091F2912D62D0035DCC2 /* ios_pyqUITests.swift */,
-				59C609212912D62D0035DCC2 /* ios_pyqUITestsLaunchTests.swift */,
-			);
-			path = "ios-pyqUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,7 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59C609162912D62D0035DCC2 /* ios_pyqTests.swift in Sources */,
+				59113B88291A12730018396E /* TodoViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,8 +314,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59C609202912D62D0035DCC2 /* ios_pyqUITests.swift in Sources */,
-				59C609222912D62D0035DCC2 /* ios_pyqUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
