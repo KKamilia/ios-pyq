@@ -16,7 +16,6 @@ class TodoViewController: UIViewController {
     var todoItem = TodoViewModel.fetchList()
     let tableView = UITableView()
     
-    @IBOutlet var todoList: UITableView!
     @IBOutlet var plusBtn: UIButton!
     
     override func viewDidLoad() {
@@ -40,27 +39,8 @@ class TodoViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        
-        // Todo: move to viewModel
         todoItem = TodoViewModel.fetchList()
         tableView.reloadData()
         super.viewWillAppear(animated)
-    }
-}
-
-extension TodoViewController:UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoItem.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TodoViewController.CustomCellIdentifier)!
-        
-        cell.textLabel?.text = "\(todoItem[indexPath.row])"
-        
-        return cell
     }
 }
