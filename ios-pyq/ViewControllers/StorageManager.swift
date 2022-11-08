@@ -25,17 +25,17 @@ struct StorageManager {
         defaultStand.set(todoList, forKey: TODO_LIST_KEY)
     }
     
-    static func removeInIndex(num: Int){
+    static func removeInIndex(num: Int) {
         var allList = getTodoList()
         allList.remove(at: num)
     }
     
-    static func removeAll(){
+    static func removeAll() {
         var allList = getTodoList()
         allList.removeAll(keepingCapacity: true)
     }
     
-    static func removeAll2(){
+    static func removeAll2() {
         defaultStand.set([], forKey: TODO_LIST_KEY)
     }
 }

@@ -49,7 +49,7 @@ class PersonalInfoViewController: UIViewController, UITabBarDelegate {
     }
     
     //todo: refactor -- layout
-    func autoLayoutAvatar(){
+    func autoLayoutAvatar() {
         avatar.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -64,7 +64,7 @@ class PersonalInfoViewController: UIViewController, UITabBarDelegate {
                                 height:usernameSafeDistance)
     }
     
-    func setUpUI(){
+    func setUpUI() {
         view.addSubview(logoutBtn)
         view.addSubview(username)
     }

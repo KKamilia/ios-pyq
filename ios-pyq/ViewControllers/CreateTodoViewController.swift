@@ -11,6 +11,8 @@ class CreateTodoViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var textField: UITextField!
     
+    let createTodoViewModel = CreateTodoViewModel()
+    
     
     let inputBarText = "请输入"
     
@@ -63,9 +65,7 @@ class CreateTodoViewController: UIViewController, UITextFieldDelegate {
     @objc
     func buttonClicked() {
         if( textField.text != ""){
-            
-            //Todo: Move to ViewModel
-            TodoViewModel.saveItem(textField.text ?? "")
+            createTodoViewModel.saveItem(input: textField.text ?? "")
             self.navigationController?.popToRootViewController(animated: true)
         }
     }  
