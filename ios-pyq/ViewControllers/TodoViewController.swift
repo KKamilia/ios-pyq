@@ -14,22 +14,6 @@ class TodoViewController: UIViewController {
     
     let viewModel = TodoViewModel()
     
-    //Question about init String
-    
-    // 1st method
-    //    var todoItem : [String]
-    //    init(todoItem: [String]) {
-    //        self.todoItem = todoItem
-    //        super.init(nibName: nil, bundle: nil)
-    //    }
-    //
-    //    required init?(coder: NSCoder) {
-    //        fatalError("init(coder:) has not been implemented")
-    //    }
-    
-    // 2nd method
-//    lazy var todoItem = viewModel.fetchList()
-    
     var todoItem : [String] = []
     
     let tableView = UITableView()

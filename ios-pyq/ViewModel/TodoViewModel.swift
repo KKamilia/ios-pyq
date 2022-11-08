@@ -9,8 +9,10 @@ import Foundation
 class TodoViewModel {
     
     func fetchList() -> [String] {
+        
         let allList = StorageManager.getTodoList()
         var todoList: [String] = [String]()
+        
         for(index, item) in allList.enumerated() {
             todoList.append("\(index+1). \(item)")
         }
