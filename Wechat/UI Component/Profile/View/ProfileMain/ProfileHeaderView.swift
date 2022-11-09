@@ -20,7 +20,7 @@ struct AvatarModifier: ViewModifier {
 }
 
 extension Image {
-    func avater() -> some View {
+    func avaterModify() -> some View {
         modifier(AvatarModifier())
     }
 }
@@ -30,7 +30,7 @@ struct ProfileHeaderView: View {
         HStack {
             Image("timeline_profile_image")
                 .resizable()
-                .avater()
+                .avaterModify()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(6)
                 .frame(width: 62, height: 62)
@@ -43,7 +43,6 @@ struct ProfileHeaderView: View {
                     .font(.subheadline)
             }
         }
-        .padding(EdgeInsets(top: 0, leading: 24, bottom: 40, trailing: 16))
     }
 }
 
