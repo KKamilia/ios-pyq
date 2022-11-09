@@ -34,13 +34,16 @@ struct ProfileHeaderView: View {
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(6)
                 .frame(width: 62, height: 62)
-            VStack(alignment: .leading){
+            
+            VStack(alignment: .leading, spacing: 8) {
                 Text("桃子猪")
-                    .font(.headline)
+                    .font(.title)
                 Text("微信号:xxxxx")
+                    .foregroundColor(Color.secondary)
                     .font(.subheadline)
             }
         }
+        .padding(EdgeInsets(top: 0, leading: 24, bottom: 40, trailing: 16))
     }
 }
 
