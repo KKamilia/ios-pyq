@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct AvatarModifier: ViewModifier {
-    func body(content: Content) -> some
-    View {
+    func body(content: Content) -> some View {
         content
             .clipShape(Circle())
             .overlay {
