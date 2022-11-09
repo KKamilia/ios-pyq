@@ -32,7 +32,6 @@ struct ProfileHeaderView: View {
                 .resizable()
                 .avaterModify()
                 .aspectRatio(contentMode: .fit)
-                .cornerRadius(20)
                 .frame(width: 62, height: 62)
             
             VStack(alignment: .leading, spacing: 8) {
