@@ -9,7 +9,15 @@ import SwiftUI
 
 struct ProfileView: View {
     var body: some View {
-        ProfileHeaderView()
+        ZStack {
+            VStack {
+//                Color("row").white.frame(height: 300)
+//                Color("gray").lightGray.frame(height: 200)
+            }
+            Me_List()
+        }
+        
+        
     }
 }
 
