@@ -12,6 +12,7 @@ class MenuViewModel: ObservableObject {
     @Published var items: [ProfileListItemModel] = []
     
     func reload() {
+        items.removeAll()
         items.append(contentsOf: [
             ProfileListItemModel(icon: "message.and.waveform", title: "服务"),
             ProfileListItemModel(icon: "shippingbox", title: "收藏"),
@@ -31,5 +32,8 @@ class MenuViewModel: ObservableObject {
         items.append(contentsOf: [
             ProfileListItemModel(icon: "arrow.clockwise.circle", title: "数据已刷新")
         ])
+    }
+    func clear() {
+        items.removeAll()
     }
 }
