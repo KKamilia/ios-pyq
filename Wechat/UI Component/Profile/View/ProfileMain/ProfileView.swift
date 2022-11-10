@@ -35,6 +35,9 @@ struct ProfileView: View {
             .onAppear{
                 viewModel.reload()
             }
+            .refreshable {
+                viewModel.refreshData()
+            }
         }
     }
 }

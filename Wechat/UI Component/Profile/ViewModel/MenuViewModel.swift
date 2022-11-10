@@ -26,4 +26,10 @@ class MenuViewModel: ObservableObject {
             ProfileListItemModel(icon: "face.smiling", title: "表情")
         ])
     }
+    
+    func refreshData() {
+        items.append(contentsOf: [
+            ProfileListItemModel(icon: "arrow.clockwise.circle", title: "数据已刷新")
+        ])
+    }
 }
