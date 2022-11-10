@@ -27,7 +27,7 @@ struct ProfileView: View {
                         }
                         .swipeActions {
                             Button(delete) {
-                                deleteItem()
+//                                viewModel.deleteItem()
                             }
                             .tint(.red)
                         }
@@ -47,9 +47,6 @@ struct ProfileView: View {
             }
         }
     }
-//    func deleteItem() {
-//        
-//    }
 }
 
 struct ProfileView_Previews: PreviewProvider {
