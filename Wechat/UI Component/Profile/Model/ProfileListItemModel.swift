@@ -10,5 +10,7 @@ import Foundation
 struct ProfileListItemModel: Identifiable, Equatable {
     let icon: String
     let title: String
-    var id: UUID
+    var id: String {
+        return title
+    }
 }
