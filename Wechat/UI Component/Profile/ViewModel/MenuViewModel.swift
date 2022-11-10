@@ -9,10 +9,10 @@ import SwiftUI
 
 class MenuViewModel: ObservableObject {
     
-    @Published var menus: [ProfileListItemModel] = []
+    @Published var items: [ProfileListItemModel] = []
     
     func reload() {
-        menus.append(contentsOf: [
+        items.append(contentsOf: [
             ProfileListItemModel(icon: "message.and.waveform", title: "服务"),
             ProfileListItemModel(icon: "shippingbox", title: "收藏"),
             ProfileListItemModel(icon: "menucard", title: "卡包"),
@@ -21,7 +21,7 @@ class MenuViewModel: ObservableObject {
     }
     
     func loadMore() {
-        menus.append(contentsOf: [
+        items.append(contentsOf: [
             ProfileListItemModel(icon: "car", title: "Didi"),
             ProfileListItemModel(icon: "face.smiling", title: "表情")
         ])

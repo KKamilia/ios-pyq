@@ -2,19 +2,30 @@
 //  AvatarModifier.swift
 //  UI Component
 //
-//  Created by Qiqi Zhao on 2022/11/9.
+//  Created by Qiqi Zhao on 2022/11/10.
 //
 
 import SwiftUI
 
-struct AvatarModifier: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct AvatarModifier_Previews: PreviewProvider {
-    static var previews: some View {
-        AvatarModifier()
+struct AvatarModifier: ViewModifier {
+    
+    @State var lineWidth = CGFloat(4)
+    @State var shadowRadius = CGFloat(7)
+    
+    let shadowColor = Color.red
+    
+    func body(content: Content) -> some View {
+        
+        content
+            .clipShape(Circle())
+            .overlay {
+                Circle().stroke(shadowColor, lineWidth: lineWidth)
+            }
+            .shadow(radius: shadowRadius)
+            .animation(.default.repeatForever(), value: lineWidth)
+            .onAppear{
+                lineWidth = 2
+                shadowRadius = 3
+            }
     }
 }

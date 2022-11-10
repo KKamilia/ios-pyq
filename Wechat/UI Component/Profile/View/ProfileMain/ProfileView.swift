@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
     @StateObject var viewModel = MenuViewModel()
+    let btnTitle = "加载更多"
     
     var body: some View {
         VStack {
@@ -17,15 +19,15 @@ struct ProfileView: View {
                     ProfileHeaderView()
                 }
                 Section {
-                    PaginationListViewModel(items: viewModel.menus) { menu in
+                    PaginationListViewModel(items: viewModel.items) { item in
                         HStack {
-                            Image(systemName: menu.icon)
-                            Text(menu.title)
+                            Image(systemName: item.icon)
+                            Text(item.title)
                         }
                     }
                 }
                 Section {
-                    Button("click") {
+                    Button(btnTitle) {
                         viewModel.loadMore()
                     }
                 }

@@ -12,13 +12,14 @@ struct ProfileHeaderView: View {
     
     let avatarWidth = CGFloat(62)
     let avatarHeight = CGFloat(62)
+    let avatar = "timeline_profile_image"
     let username = "桃子猪"
     let wechatId = "微信号:xxxxx"
     let wechatIdColor = Color.secondary
     
     var body: some View {
         HStack {
-            Image("timeline_profile_image")
+            Image(avatar)
                 .resizable()
                 .avaterModify()
                 .aspectRatio(contentMode: .fit)
@@ -36,27 +37,6 @@ struct ProfileHeaderView: View {
     }
 }
 
-struct AvatarModifier: ViewModifier {
-    @State var lineWidth = CGFloat(4)
-    @State var shadowRadius = CGFloat(7)
-    
-    let shadowColor = Color.red
-    
-    func body(content: Content) -> some View {
-        content
-            .clipShape(Circle())
-            .overlay {
-                Circle().stroke(shadowColor, lineWidth: lineWidth)
-            }
-            .shadow(radius: shadowRadius)
-            .animation(.default.repeatForever(), value: lineWidth)
-            .onAppear{
-                lineWidth = 2
-                shadowRadius = 3
-            }
-    }
-}
-
 extension Image {
     func avaterModify() -> some View {
         modifier(AvatarModifier())
@@ -66,7 +46,7 @@ extension Image {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-       ProfileHeaderView()
+        ProfileHeaderView()
     }
 }
 
