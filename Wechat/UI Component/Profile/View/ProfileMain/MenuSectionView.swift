@@ -1,13 +1,13 @@
 //
-//  ProfileView.swift
+//  MenuSectionView.swift
 //  UI Component
 //
-//  Created by Jiaxin Pu on 2022/9/6.
+//  Created by Qiqi Zhao on 2022/11/10.
 //
 
 import SwiftUI
 
-struct ProfileView: View {
+struct MenuSectionView: View {
     
     struct Menu: Identifiable {
         let id: String
@@ -38,12 +38,11 @@ struct ProfileView: View {
                 }
             }
         }
-        
     }
-    
-    struct ProfileView_Previews: PreviewProvider {
-        static var previews: some View {
-            ProfileView()
-        }
+}
+
+struct MenuSectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        MenuSectionView()
     }
 }
