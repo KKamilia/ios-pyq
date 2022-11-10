@@ -14,6 +14,7 @@ struct ProfileHeaderView: View {
     let avatarHeight = CGFloat(62)
     let username = "桃子猪"
     let wechatId = "微信号:xxxxx"
+    let wechatIdColor = Color.secondary
     
     var body: some View {
         HStack {
@@ -26,8 +27,9 @@ struct ProfileHeaderView: View {
             VStack(alignment: .leading) {
                 Text(username)
                     .font(.title)
+                
                 Text(wechatId)
-                    .foregroundColor(Color.secondary)
+                    .foregroundColor(wechatIdColor)
                     .font(.subheadline)
             }
         }
@@ -38,11 +40,13 @@ struct AvatarModifier: ViewModifier {
     @State var lineWidth = CGFloat(4)
     @State var shadowRadius = CGFloat(7)
     
+    let shadowColor = Color.red
+    
     func body(content: Content) -> some View {
         content
             .clipShape(Circle())
             .overlay {
-                Circle().stroke(.red, lineWidth: lineWidth)
+                Circle().stroke(shadowColor, lineWidth: lineWidth)
             }
             .shadow(radius: shadowRadius)
             .animation(.default.repeatForever(), value: lineWidth)
