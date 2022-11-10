@@ -36,4 +36,10 @@ class MenuViewModel: ObservableObject {
     func clear() {
         items.removeAll()
     }
+//
+//    func deleteItem(title: String = [] ) {
+//       items = items.filter {
+//            $0 !== title
+//        }
+//    }
 }

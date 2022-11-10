@@ -11,6 +11,7 @@ struct ProfileView: View {
     
     @StateObject var viewModel = MenuViewModel()
     let btnTitle = "加载更多"
+    let delete = "删除"
     
     var body: some View {
         VStack {
@@ -23,6 +24,12 @@ struct ProfileView: View {
                         HStack {
                             Image(systemName: item.icon)
                             Text(item.title)
+                        }
+                        .swipeActions {
+                            Button(delete) {
+                                deleteItem()
+                            }
+                            .tint(.red)
                         }
                     }
                 }
@@ -40,6 +47,9 @@ struct ProfileView: View {
             }
         }
     }
+//    func deleteItem() {
+//        
+//    }
 }
 
 struct ProfileView_Previews: PreviewProvider {
