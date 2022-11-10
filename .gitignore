@@ -356,6 +356,7 @@ xcuserdata/
 *.xccheckout
 
 ### Xcode Patch ###
+!*.xcodeproj/
 *.xcodeproj/*
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/project.xcworkspace/
