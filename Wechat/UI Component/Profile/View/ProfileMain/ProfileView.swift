@@ -12,6 +12,8 @@ struct ProfileView: View {
     @StateObject var viewModel = MenuViewModel()
     let btnTitle = "加载更多"
     let delete = "删除"
+    let deleteBtnColor = Color.red
+    let buttonColor = Color.black
     
     var body: some View {
         VStack {
@@ -21,15 +23,17 @@ struct ProfileView: View {
                 }
                 Section {
                     PaginationListViewModel(items: viewModel.items) { item in
-                        HStack {
+                        HStack {
                             Image(systemName: item.icon)
-                            Text(item.title)
+                            Button(item.title) {
+                                print("click")
+                            }.foregroundColor(buttonColor)
                         }
                         .swipeActions {
                             Button(delete) {
-//                                viewModel.deleteItem()
+                                //                              viewModel.deleteItem()
                             }
-                            .tint(.red)
+                            .tint(deleteBtnColor)
                         }
                     }
                 }
@@ -44,13 +48,13 @@ struct ProfileView: View {
             }
             .refreshable {
                 viewModel.refreshData()
-            }
+            }
         }
     }
-}
-
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
+    
+    struct ProfileView_Previews: PreviewProvider {
+        static var previews: some View {
+            ProfileView()
+        }
     }
 }

@@ -27,11 +27,11 @@ struct PaginationListViewModel<T: Identifiable, Content: View>: View {
         copy.reload = action
         return copy
     }
+    
     func loadable(action: @escaping () -> Void) -> Self {
         var copy = self
         copy.loadMoreAction = action
         return copy
     }
-    
 }
 

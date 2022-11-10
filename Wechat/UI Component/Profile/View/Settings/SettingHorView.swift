@@ -9,7 +9,11 @@ import SwiftUI
 
 struct SettingHorView: View {
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common)
+    let timer =
+    Timer.publish(every: 1, on: .main, in: .common)
+        .autoconnect()
+    @State var currentIndex = 1
+    
     let systemName = "gearshape"
     let setting = "设置"
     let settingTitle = "Setting Page"
@@ -30,7 +34,11 @@ struct SettingHorView: View {
                     }
                 }
                 .onAppear {
-                    reader.scrollTo(30, anchor: .center)
+                    reader.scrollTo(1, anchor: .center)
+                }
+                .onReceive(timer) { time in
+                    reader.scrollTo(currentIndex, anchor: .center)
+                    
                 }
             }
             
