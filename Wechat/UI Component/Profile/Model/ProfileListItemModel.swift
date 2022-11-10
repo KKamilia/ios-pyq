@@ -13,4 +13,5 @@ struct ProfileListItemModel: Identifiable, Equatable {
     var id: String {
         return title
     }
+    
 }
