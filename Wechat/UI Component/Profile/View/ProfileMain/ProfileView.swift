@@ -26,7 +26,7 @@ struct ProfileView: View {
             VStack {
                 List {
                     Section {
-                        NavigationLink(isActive: $showProfileHeaderView) {
+                        NavigationLink {
                             ProfileHeaderView()
                         } label: {
                             ProfileHeaderView()
