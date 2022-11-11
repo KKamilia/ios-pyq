@@ -13,7 +13,7 @@ struct ProfileHeaderView: View {
     let avatarWidth = CGFloat(62)
     let avatarHeight = CGFloat(62)
     let avatar = "timeline_profile_image"
-    let username = "桃子猪"
+    let username = "桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪"
     let wechatId = "微信号:xxxxx"
     let wechatIdColor = Color.secondary
     
@@ -28,6 +28,7 @@ struct ProfileHeaderView: View {
             VStack(alignment: .leading) {
                 Text(username)
                     .font(.headline)
+                    .lineLimit(2)
                 
                 Text(wechatId)
                     .foregroundColor(wechatIdColor)
