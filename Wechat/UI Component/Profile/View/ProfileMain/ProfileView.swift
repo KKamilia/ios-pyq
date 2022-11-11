@@ -26,14 +26,13 @@ struct ProfileView: View {
                         HStack {
                             Image(systemName: item.icon)
                             Button(item.title) {
-                                print("click")
+//                                print("click")
                             }.foregroundColor(buttonColor)
                         }
                         .swipeActions {
                             Button(delete) {
-                                //                              viewModel.deleteItem()
-                            }
-                            .tint(deleteBtnColor)
+                                viewModel.deleteItem(id: item.id)
+                            }.tint(deleteBtnColor)
                         }
                     }
                 }
