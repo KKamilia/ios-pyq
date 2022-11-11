@@ -14,7 +14,7 @@ struct ProfileView: View {
     @State var showProfileHeaderView = false
     @State var itemClick: String? = nil
     
-    let btnTitle = "加载更多"
+    let load = "加载更多"
     let delete = "删除"
     let setting = "设置"
     let title = "我的"
@@ -28,10 +28,9 @@ struct ProfileView: View {
                     Section {
                         NavigationLink(isActive: $showProfileHeaderView) {
                             ProfileHeaderView()
+                        } label: {
+                            ProfileHeaderView()
                         }
-                    label: {
-                        ProfileHeaderView()
-                    }
                     }
                     Section {
                         PaginationListViewModel(items: viewModel.items) { item in
@@ -42,24 +41,23 @@ struct ProfileView: View {
                                 default:
                                     EmptyView()
                                 }
+                            } label: {
+                                HStack {
+                                    Image(systemName: item.icon)
+                                    Button(item.title) {
+                                    }.foregroundColor(buttonColor)
+                                }
                             }
-                        label: {
-                            HStack {
-                                Image(systemName: item.icon)
-                                Button(item.title) {
-                                }.foregroundColor(buttonColor)
+                            .swipeActions {
+                                Button(delete) {
+                                    viewModel.deleteItem(id: item.id)
+                                }.tint(deleteBtnColor)
                             }
-                        }
-                        .swipeActions {
-                            Button(delete) {
-                                viewModel.deleteItem(id: item.id)
-                            }.tint(deleteBtnColor)
-                        }
                         }
                     }
                 }
                 Section {
-                    Button(btnTitle) {
+                    Button(load) {
                         viewModel.loadMore()
                     }
                 }

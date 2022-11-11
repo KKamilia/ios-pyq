@@ -27,7 +27,7 @@ struct ProfileHeaderView: View {
             
             VStack(alignment: .leading) {
                 Text(username)
-                    .font(.headline)
+                    .font(.title)
                 
                 Text(wechatId)
                     .foregroundColor(wechatIdColor)

@@ -13,30 +13,29 @@ struct SettingsView: View {
     let setting = "设置"
     let settingTitle = "Setting Page"
     let backToTopBtn = "Back To top"
-    let titleId = "titleId"
     
     var body: some View {
         ScrollView(.vertical) {
-            ScrollViewReader { reader in
                 Text(settingTitle)
                     .font(.title)
-                    .id(titleId)
-                ForEach((1...40), id: \.self) { num in
+                ForEach((1...40), id: \.self) { i in
                     HStack {
-                        Text("\(num)")
+                        Text("\(i)")
                         Image(systemName: systemName)
                         Text(setting)
                     }
                 }
-                Button(backToTopBtn) {
-                    withAnimation {
-                        reader.scrollTo(titleId, anchor: .top)
-                    }
-                }
-            }
+//            .Button(backToTopBtn) {
+//                backToTop()
+//            }
         }
+        
     }
+//    func backToTop() {
+//
+//    }
 }
+
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {

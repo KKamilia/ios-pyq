@@ -9,37 +9,28 @@ import SwiftUI
 
 struct SettingHorView: View {
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var currentIndex = 1
-    
-    let initIndex = 1
+    let timer = Timer.publish(every: 1, on: .main, in: .common)
     let systemName = "gearshape"
     let setting = "设置"
-    let title = "Setting Page"
-    
+    let settingTitle = "Setting Page"
+    let backToTopBtn = "Back To top"
     
     var body: some View {
         ScrollView(.horizontal) {
             ScrollViewReader { reader in
                 HStack {
-                    Text(title)
+                    Text(settingTitle)
                         .font(.title)
-                    ForEach((1...40), id: \.self) { num in
+                    ForEach((1...40), id: \.self) { i in
                         HStack(spacing: 15) {
-                            Text("\(num)")
+                            Text("\(i)")
                             Image(systemName: systemName)
                             Text(setting)
                         }
                     }
                 }
                 .onAppear {
-                    reader.scrollTo(initIndex, anchor: .center)
-                }
-                .onReceive(timer) { time in
-                    currentIndex += 1
-                    withAnimation {
-                        reader.scrollTo(currentIndex, anchor: .center)
-                    }
+                    reader.scrollTo(30, anchor: .center)
                 }
             }
             
