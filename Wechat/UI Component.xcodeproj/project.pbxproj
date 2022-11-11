@@ -172,8 +172,8 @@
 		B213227528C998C600281249 /* ProfileMain */ = {
 			isa = PBXGroup;
 			children = (
-				B213226C28C748F700281249 /* ProfileHeaderView.swift */,
 				B213226E28C74A1500281249 /* ProfileView.swift */,
+				B213226C28C748F700281249 /* ProfileHeaderView.swift */,
 				59C4BDAA291CC02C00E1644C /* AvatarModifier.swift */,
 			);
 			path = ProfileMain;

@@ -25,9 +25,9 @@ struct SettingHorView: View {
                 HStack {
                     Text(settingTitle)
                         .font(.title)
-                    ForEach((1...40), id: \.self) { i in
+                    ForEach((1...40), id: \.self) { num in
                         HStack(spacing: 15) {
-                            Text("\(i)")
+//                            Text("\(num)")
                             Image(systemName: systemName)
                             Text(setting)
                         }
