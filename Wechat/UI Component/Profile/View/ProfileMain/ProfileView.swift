@@ -10,8 +10,6 @@ import SwiftUI
 struct ProfileView: View {
     
     @StateObject var viewModel = MenuViewModel()
-    
-    @State var showProfileHeaderView = false
     @State var itemClick: String? = nil
     
     let load = "加载更多"
