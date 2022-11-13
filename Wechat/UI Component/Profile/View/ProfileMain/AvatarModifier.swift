@@ -12,7 +12,7 @@ struct AvatarModifier: ViewModifier {
     @State var lineWidth = CGFloat(4)
     @State var shadowRadius = CGFloat(7)
     
-    let shadowColor = Color.red
+    let shadowColor = Color.orange
     
     func body(content: Content) -> some View {
         
