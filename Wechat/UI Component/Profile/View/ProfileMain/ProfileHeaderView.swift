@@ -30,28 +30,48 @@ struct ProfileHeaderView: View {
 }
 
 struct UserInfoView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass:
+    UserInterfaceSizeClass?
+    
     let username = "桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪"
     let wechatId = "微信号:xxxxx"
     let signature = "个性签名:我是个性签名我是个性签名我是个性签名我是个性签名我是个性签名"
+    let hobby = "个人爱好"
     let wechatIdColor = Color.secondary
     let signatureColor = Color.orange
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(username)
-                .font(.headline)
-                .lineLimit(2)
-            HStack {
+        if horizontalSizeClass == .regular {
+            VStack(alignment: .leading) {
+                Text(username)
+                    .font(.headline)
+                    .lineLimit(2)
                 Text(wechatId)
                     .foregroundColor(wechatIdColor)
                     .font(.subheadline)
-                    .layoutPriority(1)
-                
                 Text(signature)
                     .font(.subheadline)
                     .foregroundColor(signatureColor)
                     .lineLimit(1)
-                    .layoutPriority(0)
+            }
+        }else {
+            HStack {
+                Text(username)
+                    .font(.headline)
+                    .lineLimit(2)
+                VStack {
+                    Text(wechatId)
+                        .foregroundColor(wechatIdColor)
+                        .font(.subheadline)
+                        .layoutPriority(1)
+                    
+                    Text(signature)
+                        .font(.subheadline)
+                        .foregroundColor(signatureColor)
+                        .lineLimit(1)
+                        .layoutPriority(0)
+                    
+                }
             }
         }
     }
@@ -66,6 +86,6 @@ extension Image {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView()
+        ProfileHeaderView().environment(\.horizontalSizeClass, .compact)
     }
 }
