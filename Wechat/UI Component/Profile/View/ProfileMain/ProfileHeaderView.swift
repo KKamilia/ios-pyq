@@ -13,8 +13,9 @@ struct ProfileHeaderView: View {
     let avatarWidth = CGFloat(62)
     let avatarHeight = CGFloat(62)
     let avatar = "timeline_profile_image"
-    let username = "桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪"
+    let username = "桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪"
     let wechatId = "微信号:xxxxx"
+    let signature = "个性签名:我是个性签名我是个性签名我是个性签名我是个性签名我是个性签名"
     let wechatIdColor = Color.secondary
     
     var body: some View {
@@ -30,10 +31,19 @@ struct ProfileHeaderView: View {
                     .font(.headline)
                     .lineLimit(2)
                 
-                Text(wechatId)
-                    .foregroundColor(wechatIdColor)
-                    .font(.subheadline)
+                HStack {
+                    Text(wechatId)
+                        .foregroundColor(wechatIdColor)
+                        .font(.subheadline)
+                    HStack {
+                        Text(signature)
+                            .font(.subheadline)
+                            .lineLimit(1)
+                    }
+                }
             }
+            Spacer()
+            Image("me_qrcode")
         }
     }
 }
@@ -50,5 +60,3 @@ struct ProfileHeaderView_Previews: PreviewProvider {
         ProfileHeaderView()
     }
 }
-
-
