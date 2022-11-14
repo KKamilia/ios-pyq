@@ -17,6 +17,7 @@ struct ProfileView: View {
     let setting = "设置"
     let title = "我的"
     let collection = "收藏"
+    let card = "卡包"
     let deleteBtnColor = Color.red
     let buttonColor = Color.black
     
@@ -37,6 +38,8 @@ struct ProfileView: View {
                                 switch (item.title) {
                                 case setting:
                                     SettingsView()
+                                case card:
+                                    CardBagView()
                                 case collection:
                                     SettingHorView()
                                 default:
