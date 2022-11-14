@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Q: How to name the profile Modifier whne we have two modifiers in one file / how to arrange?
 struct AvatarModifier: ViewModifier {
     
     @State var lineWidth = CGFloat(4)
@@ -15,7 +16,6 @@ struct AvatarModifier: ViewModifier {
     let shadowColor = Color.orange
     
     func body(content: Content) -> some View {
-        
         content
             .clipShape(Circle())
             .overlay {
@@ -27,5 +27,16 @@ struct AvatarModifier: ViewModifier {
                 lineWidth = 2
                 shadowRadius = 3
             }
+    }
+}
+
+struct RotateViewModifier: ViewModifier {
+    let action: (UIDeviceOrientation) -> Void
+    
+    func body(content: Content) -> some View {
+        content.onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) {_ in
+            action(UIDevice.current.orientation)
+            
+        }
     }
 }
