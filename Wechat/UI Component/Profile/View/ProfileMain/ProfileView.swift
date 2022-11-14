@@ -16,6 +16,7 @@ struct ProfileView: View {
     let delete = "删除"
     let setting = "设置"
     let title = "我的"
+    let collection = "收藏"
     let deleteBtnColor = Color.red
     let buttonColor = Color.black
     
@@ -36,6 +37,8 @@ struct ProfileView: View {
                                 switch (item.title) {
                                 case setting:
                                     SettingsView()
+                                case collection:
+                                    SettingHorView()
                                 default:
                                     EmptyView()
                                 }
@@ -63,6 +66,7 @@ struct ProfileView: View {
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
         }
+        .navigationViewStyle(.stack)
         .onAppear{
             viewModel.reload()
         }

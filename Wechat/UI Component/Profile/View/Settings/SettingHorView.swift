@@ -12,6 +12,9 @@ struct SettingHorView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var currentIndex = 1
     
+    @Environment(\.scenePhase) var scenePhase: ScenePhase
+    @State var blurRadius: CGFloat = 0
+    
     let initIndex = 1
     let systemName = "gearshape"
     let setting = "设置"
@@ -41,8 +44,20 @@ struct SettingHorView: View {
                         reader.scrollTo(currentIndex, anchor: .center)
                     }
                 }
+                
             }
-            
+            .blur(radius: blurRadius)
+            .onChange(of: scenePhase, perform: { state in
+                switch state {
+                case .active:
+                    withAnimation{ blurRadius = 0 }
+                case .inactive:
+                    withAnimation{ blurRadius = 15 }
+                case .background:
+                    blurRadius = 20
+                @unknown default: blurRadius = 0
+                }
+            })
         }
     }
 }
