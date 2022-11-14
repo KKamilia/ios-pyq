@@ -32,9 +32,10 @@ struct ProfileHeaderView: View {
 struct UserInfoView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass:
     UserInterfaceSizeClass?
-    @State var orientation: UIDeviceOrientation = .portrait
+    @State var orientation: UIDeviceOrientation = .unknown
+    @Environment(\.scenePhase) var scenePhase: ScenePhase
     
-    let username = """
+    var username = """
             猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
             桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
             桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪
@@ -49,7 +50,7 @@ struct UserInfoView: View {
         VStack {
             if( orientation.isLandscape || horizontalSizeClass == .regular) {
                 VStack(alignment: .leading) {
-                    Text(username)
+                    Text(scenePhase == .inactive ? "用户昵称保密" : username)
                         .font(.headline)
                         .lineLimit(2)
                     Text(wechatId)
@@ -64,11 +65,11 @@ struct UserInfoView: View {
                         .font(.subheadline)
                 }
             }else {
-                HStack {
+                VStack {
                     Text(username)
                         .font(.headline)
                         .lineLimit(2)
-                    VStack {
+                    HStack {
                         Text(wechatId)
                             .foregroundColor(wechatIdColor)
                             .font(.subheadline)
@@ -86,6 +87,7 @@ struct UserInfoView: View {
         }
     }
 }
+
 
 extension Image {
     func avaterModify() -> some View {

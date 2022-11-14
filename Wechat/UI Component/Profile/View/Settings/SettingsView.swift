@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State private var presentAlert = false
     
     let systemName = "gearshape"
     let setting = "设置"
@@ -34,6 +35,14 @@ struct SettingsView: View {
                     }
                 }
             }
+        }
+        .alert("欢迎进入设置页面~", isPresented: $presentAlert) {
+        }
+        .onAppear {
+            presentAlert = true
+            print("Setting page appear")
+        }.onDisappear {
+            print("Setting page disappear")
         }
     }
 }
