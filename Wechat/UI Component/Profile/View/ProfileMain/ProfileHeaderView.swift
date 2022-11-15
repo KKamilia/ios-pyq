@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
     
+    @StateObject var viewModel = ProfileViewModel()
+    
     let avatarWidth = CGFloat(62)
     let avatarHeight = CGFloat(62)
     let avatar = "timeline_profile_image"
@@ -23,7 +25,7 @@ struct ProfileHeaderView: View {
                 .avaterModify()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: avatarWidth, height: avatarHeight)
-            UserInfoView()
+            UserInfoView(username: $viewModel.username)
             Image(qrCode)
         }
     }
@@ -35,11 +37,7 @@ struct UserInfoView: View {
     @State var orientation: UIDeviceOrientation = .unknown
     @Environment(\.scenePhase) var scenePhase: ScenePhase
     
-    var username = """
-            猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
-            桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
-            桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪
-            """
+    @Binding var username: String
     let wechatId = "微信号:xxxxxxxx"
     let signature = "个性签名:我是个性签名我是个性签名我是个性签名我是个性签名我是个性签名"
     let hobby = "个人爱好: 吃饭，睡觉，打豆豆"
@@ -50,9 +48,12 @@ struct UserInfoView: View {
         VStack {
             if( orientation.isLandscape || horizontalSizeClass == .regular) {
                 VStack(alignment: .leading) {
-                    Text(scenePhase == .inactive ? "用户昵称保密" : username)
+                    Text(username)
                         .font(.headline)
                         .lineLimit(2)
+                        .onChange(of: scenePhase) { newValue in
+                            username = ProfileViewModel().modifyUsername(newValue)
+                        }
                     Text(wechatId)
                         .foregroundColor(wechatIdColor)
                         .font(.subheadline)
@@ -87,7 +88,6 @@ struct UserInfoView: View {
         }
     }
 }
-
 
 extension Image {
     func avaterModify() -> some View {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @StateObject var viewModel = MenuViewModel()
+    @StateObject var viewModel = ProfileViewModel()
     @State var itemClick: String? = nil
     
     let load = "加载更多"
