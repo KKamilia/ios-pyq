@@ -8,16 +8,21 @@
 import SwiftUI
 
 class ProfileViewModel: ObservableObject {
-    
     @Published var items: [ProfileListItemModel] = []
     @Published var username = """
             猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
             桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
             桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪
             """
+    @Published var wechatId = "微信号:xxxxxxxx"
+    @Published var signature = "个性签名:我是个性签名我是个性签名我是个性签名我是个性签名我是个性签名"
+    @Published var hobby = "个人爱好: 吃饭，睡觉，打豆豆"
     
-    func reload() {
-        items.removeAll()
+    init() {
+        reload()
+    }
+    
+    private func reload() {
         items.append(contentsOf: [
             ProfileListItemModel(id: UUID(), icon: "message.and.waveform", title: "服务"),
             ProfileListItemModel(id: UUID(), icon: "shippingbox", title: "收藏"),
@@ -61,5 +66,11 @@ class ProfileViewModel: ObservableObject {
             print(username)
         }
         return username
+    }
+    
+    func reloadUser() {
+        wechatId = "6666666"
+        signature = "666666"
+        hobby = "66666666"
     }
 }

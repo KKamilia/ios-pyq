@@ -27,9 +27,17 @@ struct ProfileView: View {
                 List {
                     Section {
                         NavigationLink {
-                            ProfileHeaderView()
+                            ProfileHeaderView(viewModel: viewModel,
+                                              wechatId: $viewModel.wechatId,
+                                              signature: $viewModel.signature,
+                                              hobby: $viewModel.hobby
+                            )
                         } label: {
-                            ProfileHeaderView()
+                            ProfileHeaderView(viewModel: viewModel,
+                                              wechatId: $viewModel.wechatId,
+                                              signature: $viewModel.signature,
+                                              hobby: $viewModel.hobby
+                            )
                         }
                     }
                     Section {
@@ -70,11 +78,9 @@ struct ProfileView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(.stack)
-        .onAppear{
-            viewModel.reload()
-        }
         .refreshable {
             viewModel.refreshData()
+            viewModel.reloadUser()
         }
     }
     

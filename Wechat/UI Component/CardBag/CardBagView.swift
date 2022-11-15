@@ -12,10 +12,10 @@ struct CardBagView: View {
     var body: some View {
         VStack {
             Text("当前的卡片号码: \(cardNum)")
+                .font(.title)
             TextField("请输入卡号", text: $cardNum)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
         }
-        
-        
     }
 }
 
