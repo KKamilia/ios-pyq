@@ -28,15 +28,15 @@ struct ProfileView: View {
                     Section {
                         NavigationLink {
                             ProfileHeaderView(viewModel: viewModel,
-                                              wechatId: $viewModel.wechatId,
-                                              signature: $viewModel.signature,
-                                              hobby: $viewModel.hobby
+                                              wechatId: viewModel.wechatId,
+                                              signature: viewModel.signature,
+                                              hobby: viewModel.hobby
                             )
                         } label: {
                             ProfileHeaderView(viewModel: viewModel,
-                                              wechatId: $viewModel.wechatId,
-                                              signature: $viewModel.signature,
-                                              hobby: $viewModel.hobby
+                                              wechatId: viewModel.wechatId,
+                                              signature: viewModel.signature,
+                                              hobby: viewModel.hobby
                             )
                         }
                     }

@@ -16,11 +16,10 @@ struct ProfileHeaderView: View {
     let avatarHeight = CGFloat(62)
     let avatar = "timeline_profile_image"
     let qrCode = "me_qrcode"
-    @Binding var wechatId: String
-    @Binding var signature: String
-    @Binding var hobby: String
-    
-    
+    let wechatId: String
+    let signature: String
+    let hobby: String
+
     var body: some View {
         HStack {
             Image(avatar)
@@ -29,9 +28,9 @@ struct ProfileHeaderView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: avatarWidth, height: avatarHeight)
             UserInfoView(username: $viewModel.username,
-                         wechatId: $viewModel.wechatId,
-                         signature: $viewModel.signature,
-                         hobby: $viewModel.hobby)
+                         wechatId: viewModel.wechatId,
+                         signature: viewModel.signature,
+                         hobby: viewModel.hobby)
             Image(qrCode)
         }
     }
@@ -45,9 +44,9 @@ struct UserInfoView: View {
     @Environment(\.scenePhase) var scenePhase: ScenePhase
 
     @Binding var username: String
-    @Binding var wechatId: String
-    @Binding var signature: String
-    @Binding var hobby: String
+    let wechatId: String
+    let signature: String
+    let hobby: String
     
     let wechatIdColor = Color.secondary
     let signatureColor = Color.orange
@@ -61,6 +60,7 @@ struct UserInfoView: View {
                     .onChange(of: scenePhase) { newValue in
                         username = viewModel.modifyUsername(newValue)
                     }
+
                 if(orientation.isLandscape || horizontalSizeClass == .regular) {
                     Text(wechatId)
                         .foregroundColor(wechatIdColor)

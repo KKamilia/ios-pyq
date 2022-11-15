@@ -70,7 +70,7 @@ class ProfileViewModel: ObservableObject {
     
     func reloadUser() {
         wechatId = "6666666"
-        signature = "666666"
-        hobby = "66666666"
+        signature = "6666666"
+        hobby = "6666666"
     }
 }
