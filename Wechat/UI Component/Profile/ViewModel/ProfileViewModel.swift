@@ -7,9 +7,14 @@
 
 import SwiftUI
 
-class MenuViewModel: ObservableObject {
+class ProfileViewModel: ObservableObject {
     
     @Published var items: [ProfileListItemModel] = []
+    @Published var username = """
+            猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
+            桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
+            桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪
+            """
     
     func reload() {
         items.removeAll()
@@ -41,5 +46,20 @@ class MenuViewModel: ObservableObject {
         items = items.filter({ item in
             item.id != id
         })
+    }
+    
+    func modifyUsername(_ newValue: ScenePhase) -> String {
+        switch newValue {
+        case .active:
+            username = """
+            猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
+            桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪\
+            桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪桃子猪
+            """
+        default:
+            username = "保密"
+            print(username)
+        }
+        return username
     }
 }
