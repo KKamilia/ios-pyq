@@ -11,7 +11,11 @@ struct TimelineView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     
     var body: some View {
-        TimeLineHeaderView(avatar: homeViewModel.userModel.avatar, username: homeViewModel.userModel.nickname)
+        ScrollView {
+            TimeLineHeaderView(avatar: homeViewModel.userModel.avatar, username: homeViewModel.userModel.nickname)
+            TimelineContentItemVIew()
+        }
+       
     }
 }
 

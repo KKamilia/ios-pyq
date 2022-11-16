@@ -12,8 +12,8 @@ struct ExplorationView: View {
     
     let iconSpace = CGFloat(20)
     let iconColor = Color.blue
-    let iconName: [String] = ["circle.circle.fill"]
     let moment = "朋友圈"
+    let title = "Discovery"
     
     var body: some View {
         NavigationView {
@@ -24,7 +24,7 @@ struct ExplorationView: View {
                         case moment:
                            TimelineView()
                         default:
-                            EmptyView()
+                            LikeView()
                         }
                     } label: {
                         HStack(spacing: iconSpace) {
@@ -35,25 +35,9 @@ struct ExplorationView: View {
                         }
                     }
                 }
-            }.navigationTitle("Discovery")
+            }.navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)
         }.navigationViewStyle(.stack)
-    }
-}
-
-class ExplorationViewModel: ObservableObject {
-    @Published var explorationList: [ExplorationModel] = []
-    
-    init() {
-        reload()
-    }
-    
-    func reload() {
-        explorationList.append(contentsOf:  [
-            ExplorationModel(icon: "circle.circle.fill", title: "朋友圈"),
-            ExplorationModel(icon: "gamecontroller.fill", title: "游戏"),
-            ExplorationModel(icon: "link.circle", title: "小程序")
-        ])
     }
 }
 

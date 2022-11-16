@@ -18,6 +18,10 @@
 		59CCF5992924CBED001342AC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF5982924CBED001342AC /* HomeViewModel.swift */; };
 		59CCF59B2924CCDB001342AC /* ProfileAvatarModificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF59A2924CCDB001342AC /* ProfileAvatarModificationView.swift */; };
 		59CCF5A029252146001342AC /* TimeLineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF59F29252146001342AC /* TimeLineHeaderView.swift */; };
+		59CCF5A32925408B001342AC /* ExplorationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF5A22925408B001342AC /* ExplorationViewModel.swift */; };
+		59CCF5A729254327001342AC /* TimelineContentItemVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF5A629254327001342AC /* TimelineContentItemVIew.swift */; };
+		59CCF5A92925448A001342AC /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF5A82925448A001342AC /* TimelineViewModel.swift */; };
+		59CCF5AB29254BB6001342AC /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF5AA29254BB6001342AC /* LikeView.swift */; };
 		8EDB1A80279A80F7001600B5 /* UI_ComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB1A7F279A80F7001600B5 /* UI_ComponentApp.swift */; };
 		8EDB1A82279A80F7001600B5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB1A81279A80F7001600B5 /* HomeView.swift */; };
 		8EDB1A87279A80FD001600B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EDB1A86279A80FD001600B5 /* Preview Assets.xcassets */; };
@@ -42,6 +46,10 @@
 		59CCF5982924CBED001342AC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		59CCF59A2924CCDB001342AC /* ProfileAvatarModificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAvatarModificationView.swift; sourceTree = "<group>"; };
 		59CCF59F29252146001342AC /* TimeLineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineHeaderView.swift; sourceTree = "<group>"; };
+		59CCF5A22925408B001342AC /* ExplorationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorationViewModel.swift; sourceTree = "<group>"; };
+		59CCF5A629254327001342AC /* TimelineContentItemVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineContentItemVIew.swift; sourceTree = "<group>"; };
+		59CCF5A82925448A001342AC /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
+		59CCF5AA29254BB6001342AC /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
 		8EDB1A7C279A80F7001600B5 /* UI Component.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UI Component.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDB1A7F279A80F7001600B5 /* UI_ComponentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_ComponentApp.swift; sourceTree = "<group>"; };
 		8EDB1A81279A80F7001600B5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -69,6 +77,7 @@
 		592B9EFF292483A700426CEE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				59CCF5A22925408B001342AC /* ExplorationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -129,6 +138,31 @@
 				59CCF5982924CBED001342AC /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		59CCF5A129254042001342AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				59CCF5A82925448A001342AC /* TimelineViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		59CCF5A4292541C2001342AC /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				59CCF59F29252146001342AC /* TimeLineHeaderView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		59CCF5A5292541D0001342AC /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				59CCF5A629254327001342AC /* TimelineContentItemVIew.swift */,
+				59CCF5AA29254BB6001342AC /* LikeView.swift */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 		8EDB1A73279A80F7001600B5 = {
@@ -201,6 +235,7 @@
 		8EFF8CEE279AAAAD00956FA1 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				59CCF5A129254042001342AC /* ViewModel */,
 				B28795DB290D6F7B00614653 /* Model */,
 				8EFF8CEF279AAB2C00956FA1 /* View */,
 			);
@@ -211,7 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				8EE3807B279A8BB200A19AE4 /* TimelineView.swift */,
-				59CCF59F29252146001342AC /* TimeLineHeaderView.swift */,
+				59CCF5A5292541D0001342AC /* Content */,
+				59CCF5A4292541C2001342AC /* Header */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,11 +386,15 @@
 				B28795DA290D6F7500614653 /* ProfileListItemModel.swift in Sources */,
 				592B9F072924872700426CEE /* ExplorationModel.swift in Sources */,
 				59C4BDA9291CBD1F00E1644C /* ProfileViewModel.swift in Sources */,
+				59CCF5A32925408B001342AC /* ExplorationViewModel.swift in Sources */,
 				592B9F09292497EB00426CEE /* UserProfileModel.swift in Sources */,
+				59CCF5AB29254BB6001342AC /* LikeView.swift in Sources */,
 				8EDB1A82279A80F7001600B5 /* HomeView.swift in Sources */,
 				B213226D28C748F700281249 /* ProfileHeaderView.swift in Sources */,
 				59CCF5A029252146001342AC /* TimeLineHeaderView.swift in Sources */,
 				8EDB1A80279A80F7001600B5 /* UI_ComponentApp.swift in Sources */,
+				59CCF5A729254327001342AC /* TimelineContentItemVIew.swift in Sources */,
+				59CCF5A92925448A001342AC /* TimelineViewModel.swift in Sources */,
 				59C4BDAB291CC02C00E1644C /* ProfileViewModifier.swift in Sources */,
 				8EE3807C279A8BB200A19AE4 /* TimelineView.swift in Sources */,
 				B213227828C9999B00281249 /* SettingsView.swift in Sources */,
