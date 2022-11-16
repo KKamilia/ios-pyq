@@ -15,6 +15,7 @@ struct SettingsView: View {
     let settingTitle = "Setting Page"
     let backToTopBtn = "Back To top"
     let titleId = "titleId"
+    let alertText = "欢迎进入设置页面~"
     
     var body: some View {
         ScrollView(.vertical) {
@@ -36,7 +37,7 @@ struct SettingsView: View {
                 }
             }
         }
-        .alert("欢迎进入设置页面~", isPresented: $presentAlert) {
+        .alert(alertText, isPresented: $presentAlert) {
         }
         .onAppear {
             presentAlert = true

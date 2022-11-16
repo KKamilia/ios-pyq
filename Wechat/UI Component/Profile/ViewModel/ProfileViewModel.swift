@@ -53,7 +53,7 @@ class ProfileViewModel: ObservableObject {
         })
     }
     
-    func modifyUsername(_ newValue: ScenePhase) -> String {
+    func modifyUsername(_ newValue: ScenePhase) {
         switch newValue {
         case .active:
             username = """
@@ -65,7 +65,6 @@ class ProfileViewModel: ObservableObject {
             username = "保密"
             print(username)
         }
-        return username
     }
     
     func reloadUser() {

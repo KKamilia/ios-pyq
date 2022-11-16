@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//Q: How to name the profile Modifier whne we have two modifiers in one file / how to arrange?
 struct AvatarModifier: ViewModifier {
     
     @State var lineWidth = CGFloat(4)

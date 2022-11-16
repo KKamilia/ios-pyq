@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView: View {    
     @State private var selectionTab: HomeTab = .exploration
     
     var body: some View {

@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Application: App {
+   @StateObject var userProfileModel: UserProfileModel = UserProfileModel(avatar: "timeline_profile_image")
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(userProfileModel)
         }
     }
 }
