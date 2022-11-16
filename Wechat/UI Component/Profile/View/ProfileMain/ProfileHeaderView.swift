@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileHeaderView: View {
-    @EnvironmentObject var userProfileModel: UserProfileModel
+    @EnvironmentObject var homeViewModel: HomeViewModel
     @StateObject var viewModel = ProfileViewModel()
     @Environment(\.horizontalSizeClass) var horizontalSizeClass:
     UserInterfaceSizeClass?
@@ -27,7 +27,7 @@ struct ProfileHeaderView: View {
     
     var body: some View {
         HStack {
-            Image(userProfileModel.avatar)
+            Image(homeViewModel.userModel.avatar)
                 .resizable()
                 .avaterModify()
                 .aspectRatio(contentMode: .fit)

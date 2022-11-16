@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct HomeView: View {    
+struct HomeView: View {
+    
+    @ObservedObject private var viewModel: HomeViewModel = .init()
     @State private var selectionTab: HomeTab = .exploration
     
     var body: some View {
@@ -34,6 +36,7 @@ struct HomeView: View {
                 }
                 .tag(HomeTab.me)
         }
+        .environmentObject(viewModel)
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @StateObject var viewModel = ProfileViewModel()
-    @EnvironmentObject var userProfileModel: UserProfileModel
+    @EnvironmentObject var userProfileModel: HomeViewModel
     @State var itemClick: String? = nil
     
     let load = "加载更多"
@@ -28,7 +28,7 @@ struct ProfileView: View {
                 List {
                     Section {
                         NavigationLink {
-                            EmptyView()
+                            ProfileAvatarModificationView()
                         } label: {
                             ProfileHeaderView(viewModel: viewModel,
                                               username: viewModel.username,
