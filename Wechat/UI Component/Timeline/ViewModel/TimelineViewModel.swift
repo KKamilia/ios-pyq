@@ -18,4 +18,5 @@ class TimelineViewModel: ObservableObject {
         self.nick = nick
         self.avatar = avatar
     }
+    
 }
