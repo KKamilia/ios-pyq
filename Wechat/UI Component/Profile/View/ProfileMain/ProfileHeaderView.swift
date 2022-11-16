@@ -12,6 +12,7 @@ struct ProfileHeaderView: View {
     @StateObject var viewModel = ProfileViewModel()
     @Environment(\.horizontalSizeClass) var horizontalSizeClass:
     UserInterfaceSizeClass?
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     @State var orientation: UIDeviceOrientation = .unknown
     @Environment(\.scenePhase) var scenePhase: ScenePhase
     
@@ -40,6 +41,7 @@ struct ProfileHeaderView: View {
                         .onChange(of: scenePhase) { newValue in
                             viewModel.modifyUsername(newValue)
                         }
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                     if(orientation.isLandscape || horizontalSizeClass == .regular) {
                         Text(wechatId)
                             .foregroundColor(wechatIdColor)
@@ -85,4 +87,3 @@ extension View {
         modifier(RotateViewModifier(action: action))
     }
 }
-
