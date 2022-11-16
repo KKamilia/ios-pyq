@@ -43,17 +43,16 @@ struct ProfileHeaderView: View {
                         }
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                     if(orientation.isLandscape || horizontalSizeClass == .regular) {
-                        Text(wechatId)
-                            .foregroundColor(wechatIdColor)
-                            .font(.subheadline)
-                        Text(signature)
-                            .font(.subheadline)
-                            .foregroundColor(signatureColor)
-                            .lineLimit(1)
-                        Text(hobby)
-                            .foregroundColor(signatureColor)
-                            .font(.subheadline)
-                        
+                            Text(wechatId)
+                                .foregroundColor(wechatIdColor)
+                                .font(.subheadline)
+                            Text(signature)
+                                .font(.subheadline)
+                                .foregroundColor(signatureColor)
+                                .lineLimit(1)
+                            Text(hobby)
+                                .foregroundColor(signatureColor)
+                                .font(.subheadline)
                     }else {
                         HStack {
                             Text(wechatId)

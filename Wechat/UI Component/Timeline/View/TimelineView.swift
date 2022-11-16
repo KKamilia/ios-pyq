@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct TimelineView: View {
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    
     var body: some View {
-        Text("TimelineView")
+        TimeLineHeaderView(avatar: homeViewModel.userModel.avatar, username: homeViewModel.userModel.nickname)
     }
 }
 

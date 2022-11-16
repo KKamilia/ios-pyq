@@ -22,7 +22,7 @@ struct ExplorationView: View {
                     NavigationLink {
                         switch (i.title) {
                         case moment:
-                            MomentsView()
+                           TimelineView()
                         default:
                             EmptyView()
                         }
@@ -35,8 +35,9 @@ struct ExplorationView: View {
                         }
                     }
                 }
-            }
-        }
+            }.navigationTitle("Discovery")
+                .navigationBarTitleDisplayMode(.inline)
+        }.navigationViewStyle(.stack)
     }
 }
 

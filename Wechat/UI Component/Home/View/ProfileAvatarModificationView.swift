@@ -11,9 +11,10 @@ struct ProfileAvatarModificationView: View {
     @EnvironmentObject private var homeviewModel: HomeViewModel
     @State var showEdit = false
     
-    let editAvatar = "修改头像"
     let buttonName = "ellipsis"
+    let editAvatar = "修改头像"
     let more = "更多"
+    let newAvatarUrl = "timeline_profile_image_lu"
     
     var body: some View {
         VStack {
@@ -29,8 +30,8 @@ struct ProfileAvatarModificationView: View {
                 Image(systemName: buttonName)
             }
             .actionSheet(isPresented: $showEdit) {
-                ActionSheet(title: Text(more), buttons: [.default(Text("修改头像")) {
-                    homeviewModel.updateLoginedAvatarUrl(url: "timeline_profile_image_lu")
+                ActionSheet(title: Text(more), buttons: [.default(Text(editAvatar)) {
+                    homeviewModel.updateLoginedAvatarUrl(url: newAvatarUrl)
                 }, .cancel()])
             }
         }
