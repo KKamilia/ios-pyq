@@ -24,7 +24,7 @@ struct ExplorationView: View {
                         case moment:
                            TimelineView()
                         default:
-                            LikeView()
+                            EmptyView()
                         }
                     } label: {
                         HStack(spacing: iconSpace) {
