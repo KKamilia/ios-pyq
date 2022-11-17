@@ -165,9 +165,9 @@
 		59CCF5A5292541D0001342AC /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				59CCF5A629254327001342AC /* TimelineContentItemView.swift */,
 				59CCF5AA29254BB6001342AC /* LikeView.swift */,
 				59CCF5AC29255195001342AC /* CommentView.swift */,
+				59CCF5A629254327001342AC /* TimelineContentItemView.swift */,
 				5915B9E72926119100297A21 /* TimelineContentView.swift */,
 				5915B9E92926314000297A21 /* ImageView.swift */,
 			);

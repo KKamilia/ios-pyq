@@ -34,7 +34,7 @@ struct TimelineContentItemView: View {
                 if let images = model.images, !images.isEmpty {
                     ImageView(image: images)
                 }
-
+                
                 HStack() {
                     Button {
                         likeCallback()
@@ -53,6 +53,10 @@ struct TimelineContentItemView: View {
                             CommentView(name: comment.sender.username, content: comment.content)
                         }
                     }
+                }
+                
+                if let likes = model.likers {
+                    LikeView(likers: likes)
                 }
             }
         }

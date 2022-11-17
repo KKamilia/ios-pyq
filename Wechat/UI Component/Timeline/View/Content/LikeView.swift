@@ -18,19 +18,15 @@ struct LikeView: View {
     var body: some View {
         HStack {
             Image(systemName: iconName)
-                .resizable()
-                .offset(y: offsetY)
-                .foregroundColor(.black)
-            ForEach(likers, id: \.self) { i in
-                if (likers.count > 1) {
-                    Text(seperator + "\(i)")
-                        .foregroundColor(.black)
-                }else {
-                    Text(i)
-                        .foregroundColor(.black)
-                }
-            }
+                .foregroundColor(.blue)
+                Text(joinLikers(likers: likers))
+                .foregroundColor(.blue)
         }
+    }
+    
+    func joinLikers(likers: [String]) -> String{
+         var newLikers: String = likers.joined(separator: seperator)
+        return newLikers
     }
 }
 

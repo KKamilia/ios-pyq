@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ImageView: View {
+
     let image : [TimelineImage]
     let picFrame = CGFloat(200)
     let multipleImageSize: CGSize = CGSize(width: 90, height: 90)

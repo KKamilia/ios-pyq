@@ -20,7 +20,7 @@ class TimelineViewModel: ObservableObject {
             .init(content: "（放弃）学习swift的第10天",
                   images: [.init(url: "Swift_icon")],
                   sender: .init(username: "桃子猪", nick: "桃子猪", avatar: "timeline_profile_image"),
-                  comments: nil,
+                  comments: [.init(content: "66666666", sender: .init(username: "蜘蛛侠🕷️", nick: "蜘蛛侠🕷️", avatar: "me_qrcode"))],
                   likers: nil),
             .init(content: "Happy workday",
                   images: [.init(url: "workday")],
@@ -39,8 +39,6 @@ class TimelineViewModel: ObservableObject {
                   likers: ["草莓熊🍓"]),
             .init(content: "懒懒的小猫咪",
                   images: [.init(url: "kitty1"),
-                           .init(url: "kitty2"),
-                           .init(url: "kitty1"),
                            .init(url: "kitty2")],
                   sender: .init(username: "长颈鹿", nick: "长颈鹿", avatar: "timeline_profile_image_lu"),
                   comments: nil,
@@ -58,7 +56,7 @@ class TimelineViewModel: ObservableObject {
     
     func like(_ item: TimelineContentItemModel) {
         var newItem = item
-        var newLikers: [String] = []
+        var newLikers = Array(item.likers ?? [])
         newLikers.append("钢铁侠")
         newItem.likers = newLikers
         
@@ -70,7 +68,9 @@ class TimelineViewModel: ObservableObject {
     func comment(_ item: TimelineContentItemModel) {
         var newItem = item
         var newComment = Array(item.comments ?? [])
-        newComment.append(.init(content: "这是一条评论", sender: .init(username: "桃子猪", nick: "桃子猪", avatar: "timeline_profile_image")))
+        
+        newComment.append(.init(content: "这是一条评论",
+                                sender: .init(username: "桃子猪🍑", nick: "桃子猪🍑", avatar: "timeline_profile_image")))
         newItem.comments = newComment
         
         if let index = items.firstIndex(where: { $0 == item }) {
