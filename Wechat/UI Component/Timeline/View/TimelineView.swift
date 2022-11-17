@@ -24,7 +24,6 @@ struct TimelineView: View {
                 } .onAppear{
                     viewModel.loadMoreData(i)
                 }
-                
             }
         }
         

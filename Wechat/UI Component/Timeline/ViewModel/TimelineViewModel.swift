@@ -69,7 +69,7 @@ class TimelineViewModel: ObservableObject {
     
     func comment(_ item: TimelineContentItemModel) {
         var newItem = item
-        var newComment: [TimelineComment] = []
+        var newComment = Array(item.comments ?? [])
         newComment.append(.init(content: "这是一条评论", sender: .init(username: "桃子猪", nick: "桃子猪", avatar: "timeline_profile_image")))
         newItem.comments = newComment
         
