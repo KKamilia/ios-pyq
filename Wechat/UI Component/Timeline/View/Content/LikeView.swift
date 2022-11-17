@@ -25,7 +25,7 @@ struct LikeView: View {
     }
     
     func joinLikers(likers: [String]) -> String{
-         var newLikers: String = likers.joined(separator: seperator)
+        let newLikers: String = likers.joined(separator: seperator)
         return newLikers
     }
 }

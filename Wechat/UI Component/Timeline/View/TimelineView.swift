@@ -10,10 +10,9 @@ import SwiftUI
 struct TimelineView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @ObservedObject var viewModel = TimelineViewModel()
-    //    var items: [TimelineContentItemModel]
     
     var body: some View {
-        ScrollView {
+       List {
             TimeLineHeaderView(avatar: homeViewModel.userModel.avatar, username: homeViewModel.userModel.nickname)
             
             ForEach(viewModel.items) { i in
@@ -21,12 +20,14 @@ struct TimelineView: View {
                     viewModel.like(i)
                 } commentCallback: {
                     viewModel.comment(i)
-                } .onAppear{
+                }
+                .onAppear{
                     viewModel.loadMoreData(i)
                 }
             }
         }
-        
+        .listStyle(.plain)
+        .navigationBarTitle("Discovery")
     }
 }
 

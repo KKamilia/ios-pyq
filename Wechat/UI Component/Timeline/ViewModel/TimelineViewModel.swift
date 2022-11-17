@@ -33,7 +33,7 @@ class TimelineViewModel: ObservableObject {
                   comments: nil,
                   likers: nil),
             .init(content: "今天brunch吃了啥？",
-                  images: [.init(url: "brunch"), .init(url: "brunch2")],
+                  images: [.init(url: "brunch"), .init(url: "brunch2"), .init(url: "workday"), .init(url: "tower")],
                   sender: .init(username: "长颈鹿", nick: "长颈鹿", avatar: "timeline_profile_image_lu"),
                   comments: nil,
                   likers: ["草莓熊🍓"]),
@@ -52,11 +52,18 @@ class TimelineViewModel: ObservableObject {
                            sender: .init(username: "美国队长",
                                          nick: "美国队长",
                                          avatar: "me_qrcode")))
+        items.append(.init(content: "这是一条新的朋友圈2",
+                           images: [.init(url:  "workday")],
+                           sender: .init(username: "美国队长",
+                                         nick: "美国队长",
+                                         avatar: "me_qrcode")))
+        
     }
     
     func like(_ item: TimelineContentItemModel) {
         var newItem = item
         var newLikers = Array(item.likers ?? [])
+        
         newLikers.append("钢铁侠")
         newItem.likers = newLikers
         

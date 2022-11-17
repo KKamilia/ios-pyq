@@ -39,24 +39,27 @@ struct TimelineContentItemView: View {
                     Button {
                         likeCallback()
                     } label: {
+                        Image(systemName: "heart")
                         Text(like)
                     }
                     Button {
                         commentCallback()
                     } label: {
+                        Image(systemName: "message")
                         Text(comment)
                     }
                 }.buttonStyle(.bordered)
+            
+                if let likes = model.likers {
+                    LikeView(likers: likes)
+                }
+                
                 if let comments = model.comments {
                     VStack {
                         ForEach(comments) { comment in
                             CommentView(name: comment.sender.username, content: comment.content)
                         }
                     }
-                }
-                
-                if let likes = model.likers {
-                    LikeView(likers: likes)
                 }
             }
         }
