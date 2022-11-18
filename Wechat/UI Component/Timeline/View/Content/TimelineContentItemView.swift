@@ -15,6 +15,8 @@ struct TimelineContentItemView: View {
     
     let like = "Like"
     let comment = "Commnet"
+    let likeIcon = "heart"
+    let commentIcon = "message"
     let frame = CGFloat(55.0)
     let space = CGFloat(12.0)
     
@@ -39,13 +41,13 @@ struct TimelineContentItemView: View {
                     Button {
                         likeCallback()
                     } label: {
-                        Image(systemName: "heart")
+                        Image(systemName: likeIcon)
                         Text(like)
                     }
                     Button {
                         commentCallback()
                     } label: {
-                        Image(systemName: "message")
+                        Image(systemName: commentIcon)
                         Text(comment)
                     }
                 }.buttonStyle(.bordered)

@@ -7,30 +7,42 @@
 
 import Foundation
 
-struct TimelineContentItemModel: Identifiable, Equatable {
+struct TimelineContentItemModel: Identifiable, Equatable, Codable {
+    var id: Int = Int.random(in: 1...100)
     let content: String?
     let images: [TimelineImage]?
     let sender: TimelineSender?
     var comments: [TimelineComment]?
     var likers: [String]?
     
-    var id: String {
-        (content ?? "") + (sender?.username ?? "")
-    }
+    init(
+        id: Int,
+        content: String?,
+        images: [TimelineImage]?,
+        sender: TimelineSender?,
+        comments: [TimelineComment]?,
+        likers: [String]?) {
+            self.id = id
+            self.content = content
+            self.images = images
+            self.sender = sender
+            self.comments = comments
+            self.likers = likers
+        }
 }
 
-struct TimelineImage: Identifiable, Equatable {
+struct TimelineImage: Identifiable, Equatable, Codable {
     let url: String
     var id: String { url }
 }
 
-struct TimelineSender: Equatable {
+struct TimelineSender: Equatable, Codable {
     let username: String
     let nick: String
     let avatar: String
 }
 
-struct TimelineComment: Identifiable, Equatable {
+struct TimelineComment: Identifiable, Equatable, Codable {
     let content: String
     let sender: TimelineSender
     

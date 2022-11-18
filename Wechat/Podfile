@@ -1,0 +1,6 @@
+platform :ios, '16.0'
+inhibit_all_warnings!
+
+target 'UI Component' do
+  pod 'Alamofire', '~> 5.6'
+end
