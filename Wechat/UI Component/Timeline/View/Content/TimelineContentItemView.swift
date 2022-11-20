@@ -17,7 +17,7 @@ struct TimelineContentItemView: View {
     let comment = "Commnet"
     let likeIcon = "heart"
     let commentIcon = "message"
-    let frame = CGFloat(55.0)
+    let frameSize: CGSize = CGSize(width: 55.0, height: 55.0)
     let space = CGFloat(12.0)
     
     
@@ -25,8 +25,8 @@ struct TimelineContentItemView: View {
         HStack(alignment: .top, spacing: space) {
             Image(model.sender?.avatar ?? "")
                 .resizable()
-                .frame(width: frame, height: frame)
-            VStack(alignment: .leading, spacing: 10) {
+                .frame(width: frameSize.width, height: frameSize.height)
+            VStack(alignment: .leading, spacing: space) {
                 Text(model.sender?.nick ?? "")
                     .bold()
                 Text(model.content ?? "")

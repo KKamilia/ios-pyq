@@ -6,16 +6,18 @@
 //
 
 import Foundation
+import Combine
+import Alamofire
 
-class TimelineViewModel: ObservableObject {
+class TimelineViewModel: NSObject, ObservableObject {
     
     @Published var items: [TimelineContentItemModel] = []
     
-    init() {
-        load()
-    }
+    private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     
-    private func load() {
+    override init() {}
+    
+    func load() {
         items = [
             .init(id: 1, content: "（放弃）学习swift的第10天",
                   images: [.init(url: "Swift_icon")],
@@ -47,22 +49,16 @@ class TimelineViewModel: ObservableObject {
     }
     
     func loadMoreData(_ item: TimelineContentItemModel) {
-        items.append(.init(id: 6,
-                           content: "这是一条新的朋友圈",
-                           images: [.init(url:  "workday")],
-                           sender: .init(username: "美国队长",
-                                         nick: "美国队长",
-                                         avatar: "me_qrcode"),
-                           comments: nil,
-                           likers: nil))
-        items.append(.init(id: 7, content: "这是一条新的朋友圈2",
-                           images: [.init(url:  "workday")],
-                           sender: .init(username: "美国队长",
-                                         nick: "美国队长",
-                                         avatar: "me_qrcode"),
-                           comments: nil,
-                           likers: nil))
-        
+        if(items.last == item) {
+            items.append(.init(id: 6,
+                               content: "这是一条新的朋友圈",
+                               images: [.init(url:  "workday")],
+                               sender: .init(username: "美国队长",
+                                             nick: "美国队长",
+                                             avatar: "me_qrcode"),
+                               comments: nil,
+                               likers: nil))
+        }
     }
     
     func like(_ item: TimelineContentItemModel) {
@@ -89,4 +85,55 @@ class TimelineViewModel: ObservableObject {
             items[index] = newItem
         }
     }
+    
+    func loadWithURLSession( _ resultCallback: @escaping(String?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) {data, _, error in
+            DispatchQueue.main.async {
+                if let `data` = data {
+                    let i = try! JSONDecoder().decode([TimelineContentItemModel].self, from: data)
+                    self.items = i
+                } else {
+                    resultCallback(nil)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func loadWithAlamofire( _ resultCallback: @escaping(String?) -> Void) {
+        
+        let decoder = JSONDecoder()
+        
+        AF.request(url).response { res in
+            if let `data` = res.data {
+                let x: [TimelineContentItemModel] = try! decoder.decode([TimelineContentItemModel].self, from: data)
+                self.items = x
+            } else {
+                resultCallback(nil)
+            }
+        }
+    }
+    
+    
+    //    func loadWithAlamofire() async {
+    //        DispatchQueue.global().async {
+    //            AF.request(self.url).response { response in
+    //                // todo: do not forece to unwrapp + if let wrappe the data before
+    //
+    //         let x: [TimelineContentItemModel] = try JSONDecoder().decode([TimelineContentItemModel].self,
+    //                                                                                from: response.data)
+    //            }
+    //        }
+    //    }
+    
+    
+    //    func loadWithURLSession() async {
+    //        do {
+    //            let (data, _) = try await URLSession.shared.data(from: url)
+    //            let x: [TimelineContentItemModel] = try! JSONDecoder().decode([TimelineContentItemModel].self, from: data)
+    //            items = x
+    //        } catch() {
+    //            print("error")
+    //        }
+    //    }
 }

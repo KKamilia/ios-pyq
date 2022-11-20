@@ -8,7 +8,7 @@
 import Foundation
 
 struct TimelineContentItemModel: Identifiable, Equatable, Codable {
-    var id: Int = Int.random(in: 1...100)
+    var id: Int 
     let content: String?
     let images: [TimelineImage]?
     let sender: TimelineSender?
