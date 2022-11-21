@@ -15,6 +15,8 @@ class TimelineViewModel: NSObject, ObservableObject {
     @Published var items: [TimelineContentItemModel] = []
     
     private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
+    private let userDefaultKey = "ITEMS"
+    private let pathComponant = "items.plist"
     
     override init() {
         
@@ -124,11 +126,11 @@ class TimelineViewModel: NSObject, ObservableObject {
         else {
             return
         }
-        UserDefaults.standard.set(data, forKey: "ITEMS")
+        UserDefaults.standard.set(data, forKey: userDefaultKey)
     }
     
     func restoreByUserDefault() {
-        guard let data = UserDefaults.standard.data(forKey: "ITEMS")
+        guard let data = UserDefaults.standard.data(forKey: userDefaultKey)
         else {
             return
         }
@@ -143,7 +145,7 @@ class TimelineViewModel: NSObject, ObservableObject {
         DispatchQueue.global().async {
             AF.request(self.url).response { res in
                 if let `data` = res.data {
-                    guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
+                    guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(self.pathComponant)
                     else {
                         return
                     }
@@ -156,7 +158,7 @@ class TimelineViewModel: NSObject, ObservableObject {
     }
     
     func restoreDataFromFile() {
-        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
+        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(pathComponant)
         else {
             return
         }
