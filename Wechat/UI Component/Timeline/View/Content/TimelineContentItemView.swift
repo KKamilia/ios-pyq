@@ -55,7 +55,6 @@ struct TimelineContentItemView: View {
                 if let likes = model.likers {
                     LikeView(likers: likes)
                 }
-                
                 if let comments = model.comments {
                     VStack {
                         ForEach(comments) { comment in

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import Alamofire
+import SwiftUI
 
 class TimelineViewModel: NSObject, ObservableObject {
     
@@ -15,7 +16,9 @@ class TimelineViewModel: NSObject, ObservableObject {
     
     private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     
-    override init() {}
+    override init() {
+        
+    }
     
     func load() {
         items = [
@@ -101,7 +104,6 @@ class TimelineViewModel: NSObject, ObservableObject {
     }
     
     func loadWithAlamofire( _ resultCallback: @escaping(String?) -> Void) {
-        
         let decoder = JSONDecoder()
         
         AF.request(url).response { res in
@@ -113,7 +115,6 @@ class TimelineViewModel: NSObject, ObservableObject {
             }
         }
     }
-    
     
     //    func loadWithAlamofire() async {
     //        DispatchQueue.global().async {

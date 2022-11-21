@@ -8,13 +8,38 @@
 import SwiftUI
 
 struct LoadingView: View {
+    @State var isHideLoader: Bool = true
+    
+    let tintColor = Color.red
+    let scalSize = CGFloat(3.0)
+    let padding = CGFloat(50)
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            LoaderView(tintColor: tintColor, scalSize: scalSize)
+                .padding(.bottom, padding)
+                .hidden(isHideLoader)
+        }
     }
 }
 
-struct LoadingView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingView()
+struct LoaderView: View {
+    var tintColor: Color = .red
+    var scalSize: CGFloat = 1.0
+    
+    var body: some View {
+        ProgressView()
+            .scaleEffect(scalSize,anchor: .center)
+            .progressViewStyle(CircularProgressViewStyle(tint: tintColor))
+    }
+}
+
+extension View {
+    @ViewBuilder func hidden(_ shouldHide: Bool) -> some View {
+        switch shouldHide {
+        case true: self.hidden()
+        case false: self
+        }
     }
 }

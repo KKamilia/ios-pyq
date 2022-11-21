@@ -8,28 +8,26 @@
 import SwiftUI
 
 struct ImageView: View {
-
+    
     let image : [TimelineImage]
     let picFrame = CGFloat(200)
     let multipleImageSize: CGSize = CGSize(width: 90, height: 90)
     
     var body: some View {
         if image.count == 1 {
-            Image(image.first?.url ?? "")
-                .resizable()
+            LoadingImageView(imageURL: image.first?.url ?? "")
                 .scaledToFit()
                 .frame(maxWidth: picFrame)
         }else {
             LazyVGrid(columns: [GridItem(), GridItem(), GridItem()]) {
+                
                 ForEach(image) { image in
-                    Image(image.url)
-                        .resizable()
+                    LoadingImageView(imageURL:image.url)
                         .scaledToFit()
                         .frame(width: multipleImageSize.width, height: multipleImageSize.height)
                         .clipped()
                 }
             }
-            
         }
     }
 }

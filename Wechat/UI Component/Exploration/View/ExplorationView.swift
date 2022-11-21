@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExplorationView: View {
     @StateObject var viewModel = ExplorationViewModel()
-    
+
     let iconSpace = CGFloat(20)
     let iconColor = Color.blue
     let moment = "朋友圈"
@@ -22,7 +22,7 @@ struct ExplorationView: View {
                     NavigationLink {
                         switch (i.title) {
                         case moment:
-                           TimelineView()
+                            TimelineView()
                         default:
                             EmptyView()
                         }

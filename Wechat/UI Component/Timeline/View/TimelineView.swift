@@ -12,6 +12,8 @@ struct TimelineView: View {
     @ObservedObject var viewModel = TimelineViewModel()
     @State var callback: String = ""
     
+    let navigationTitle = "Discovery"
+    
     var body: some View {
         List {
             TimeLineHeaderView(avatar: homeViewModel.userModel.avatar, username: homeViewModel.userModel.nickname)
@@ -27,27 +29,19 @@ struct TimelineView: View {
                 }
             }
         }
+        .overlay {
+            if viewModel.items.isEmpty {
+                LoadingView(isHideLoader: false)
+            } else {
+                LoadingView(isHideLoader: true)
+            }
+        }
         .onAppear{
-            // async
-            
-//            Task {
-//                await viewModel.loadWithURLSession()
-//            }
-//
-//            viewModel.loadWithURLSession { string in
-//                callback = string ?? ""
-//            }
             viewModel.loadWithAlamofire { string in
                 callback = string ?? ""
             }
         }
         .listStyle(.plain)
-        .navigationBarTitle("Discovery")
-    }
-}
-
-struct TimelineView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimelineView()
+        .navigationBarTitle(navigationTitle)
     }
 }
