@@ -37,9 +37,13 @@ struct TimelineView: View {
             }
         }
         .onAppear{
-            viewModel.loadWithAlamofire { string in
-                callback = string ?? ""
-            }
+            viewModel.restoreByUserDefault()
+//            viewModel.loadWithAlamofire { string in
+//                callback = string ?? ""
+//            }
+        }
+        .refreshable {
+            viewModel.storeDataToFileByUserDefaults()
         }
         .listStyle(.plain)
         .navigationBarTitle(navigationTitle)

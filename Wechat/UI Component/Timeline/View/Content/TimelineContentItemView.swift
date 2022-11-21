@@ -23,8 +23,7 @@ struct TimelineContentItemView: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: space) {
-            Image(model.sender?.avatar ?? "")
-                .resizable()
+            LoadingImageView(imageURL: model.sender?.avatar ?? "")
                 .frame(width: frameSize.width, height: frameSize.height)
             VStack(alignment: .leading, spacing: space) {
                 Text(model.sender?.nick ?? "")
@@ -51,7 +50,7 @@ struct TimelineContentItemView: View {
                         Text(comment)
                     }
                 }.buttonStyle(.bordered)
-            
+                
                 if let likes = model.likers {
                     LikeView(likers: likes)
                 }

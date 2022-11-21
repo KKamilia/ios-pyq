@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct LoadingImageView: View {
-  
+
     let imageURL: String
     
     var body: some View {
-        AsyncImage(url: URL(string: imageURL)) { i in
-            i.image?.resizable()
+        AsyncImage(url: URL(string: imageURL)) { phase in
+            if let image = phase.image {
+                image.resizable() 
+            } else {
+                ProgressView()
+            }
         }
     }
 }

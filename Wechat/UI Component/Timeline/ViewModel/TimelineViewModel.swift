@@ -116,6 +116,37 @@ class TimelineViewModel: NSObject, ObservableObject {
         }
     }
     
+    func storeDataToFileByUserDefaults() {
+        loadWithAlamofire { s in
+            let _: String = s ?? ""
+        }
+        guard let data = try? PropertyListEncoder().encode(items)
+        else {
+            return
+        }
+        UserDefaults.standard.set(data, forKey: "ITEMS")
+    }
+    
+    func restoreByUserDefault() {
+       guard let data = UserDefaults.standard.data(forKey: "ITEMS")
+       else {
+            return
+        }
+        guard let item = try? PropertyListDecoder().decode([TimelineContentItemModel].self, from: data)
+        else {
+            return
+        }
+        items = item
+    }
+    
+//    func storeDateToFile() {
+//        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items")
+//        else {
+//            return
+//        }
+//    }
+    
+    
     //    func loadWithAlamofire() async {
     //        DispatchQueue.global().async {
     //            AF.request(self.url).response { response in

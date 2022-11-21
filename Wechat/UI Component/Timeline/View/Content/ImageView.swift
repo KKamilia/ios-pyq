@@ -14,6 +14,7 @@ struct ImageView: View {
     let multipleImageSize: CGSize = CGSize(width: 90, height: 90)
     
     var body: some View {
+        // todo: frame of iamge
         if image.count == 1 {
             LoadingImageView(imageURL: image.first?.url ?? "")
                 .scaledToFit()
