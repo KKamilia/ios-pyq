@@ -128,8 +128,8 @@ class TimelineViewModel: NSObject, ObservableObject {
     }
     
     func restoreByUserDefault() {
-       guard let data = UserDefaults.standard.data(forKey: "ITEMS")
-       else {
+        guard let data = UserDefaults.standard.data(forKey: "ITEMS")
+        else {
             return
         }
         guard let item = try? PropertyListDecoder().decode([TimelineContentItemModel].self, from: data)
@@ -139,33 +139,37 @@ class TimelineViewModel: NSObject, ObservableObject {
         items = item
     }
     
-//    func storeDateToFile() {
-//        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items")
-//        else {
-//            return
-//        }
-//    }
+    func storeDateToFile() {
+        DispatchQueue.global().async {
+            AF.request(self.url).response { res in
+                if let `data` = res.data {
+                    guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
+                    else {
+                        return
+                    }
+                    do {
+                        try? data.write(to: path)
+                    }
+                }
+            }
+        }
+    }
     
-    
-    //    func loadWithAlamofire() async {
-    //        DispatchQueue.global().async {
-    //            AF.request(self.url).response { response in
-    //                // todo: do not forece to unwrapp + if let wrappe the data before
-    //
-    //         let x: [TimelineContentItemModel] = try JSONDecoder().decode([TimelineContentItemModel].self,
-    //                                                                                from: response.data)
-    //            }
-    //        }
-    //    }
-    
-    
-    //    func loadWithURLSession() async {
-    //        do {
-    //            let (data, _) = try await URLSession.shared.data(from: url)
-    //            let x: [TimelineContentItemModel] = try! JSONDecoder().decode([TimelineContentItemModel].self, from: data)
-    //            items = x
-    //        } catch() {
-    //            print("error")
-    //        }
-    //    }
+    func restoreDataFromFile() {
+        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
+        else {
+            return
+        }
+        do {
+            guard let item = try? Data(contentsOf: path)
+            else {
+                return
+            }
+            guard let i = try? JSONDecoder().decode([TimelineContentItemModel].self, from: item)
+            else {
+                return
+            }
+            items = i
+        }
+    }
 }
