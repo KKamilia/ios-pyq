@@ -15,6 +15,7 @@ class TimelineViewModel: ObservableObject {
     @Published var items: [TimelineContentItemModel] = []
     @ObservedObject var service = TimelineService()
     @Published var presentAlert: Bool = false
+    @Published var errorMessage: String = "nil"
     
     private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     private let userDefaultKey = "ITEMS"
@@ -24,15 +25,29 @@ class TimelineViewModel: ObservableObject {
     private var subscriptions: Set<AnyCancellable> = []
     
     init() {
+        
+    }
+    
+    func loadData() {
         service.loadWithURLSessionPublisher()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
-            }, receiveValue: { value in
-                self.items = value
+                switch completion {
+                case .finished:
+                    print("succeed")
+                    print(self.presentAlert)
+                case .failure(let error):
+                    self.errorMessage = error.description
+                    self.presentAlert = true
+                    print("fail")
+                    print(self.presentAlert)
+                }
+            }, receiveValue: { completion in
+                self.items = completion
             })
             .store(in: &self.subscriptions)
     }
-        
+    
     func load() {
         items = [
             .init(id: 1, content: "（放弃）学习swift的第10天",

@@ -12,8 +12,8 @@ struct TimelineView: View {
     @ObservedObject var viewModel = TimelineViewModel()
     @State var callback: String = ""
     
-    let alertText = "error"
     let navigationTitle = "Discovery"
+    let alertButtonText = "OK"
     
     var body: some View {
         List {
@@ -25,19 +25,13 @@ struct TimelineView: View {
                 } commentCallback: {
                     viewModel.comment(i)
                 }
-                .onAppear{
-                    viewModel.loadMoreData(i)
-                }
             }
-            .alert(isPresented: $viewModel.presentAlert) {
-                Alert(
-                    title: Text("error"),
-                    primaryButton: .destructive(Text("Try Again")) {
-                        // resend request
-                    },
-                    secondaryButton: .cancel()
-                )
-            }
+        }
+        .onAppear{
+            viewModel.loadData()
+        }
+        .alert(viewModel.errorMessage, isPresented: $viewModel.presentAlert) {
+            Button(alertButtonText, role: .cancel) {}
         }
         .overlay {
             if viewModel.items.isEmpty {
