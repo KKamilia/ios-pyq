@@ -14,6 +14,7 @@ class TimelineViewModel: ObservableObject {
     
     @Published var items: [TimelineContentItemModel] = []
     @ObservedObject var service = TimelineService()
+    @Published var presentAlert: Bool = false
     
     private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     private let userDefaultKey = "ITEMS"
@@ -31,7 +32,7 @@ class TimelineViewModel: ObservableObject {
             })
             .store(in: &self.subscriptions)
     }
-    
+        
     func load() {
         items = [
             .init(id: 1, content: "（放弃）学习swift的第10天",

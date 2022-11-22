@@ -11,10 +11,10 @@ struct TimelineView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @ObservedObject var viewModel = TimelineViewModel()
     @State var callback: String = ""
-
     
+    let alertText = "error"
     let navigationTitle = "Discovery"
-
+    
     var body: some View {
         List {
             TimeLineHeaderView(avatar: homeViewModel.userModel.avatar, username: homeViewModel.userModel.nickname)
@@ -29,6 +29,15 @@ struct TimelineView: View {
                     viewModel.loadMoreData(i)
                 }
             }
+            .alert(isPresented: $viewModel.presentAlert) {
+                Alert(
+                    title: Text("error"),
+                    primaryButton: .destructive(Text("Try Again")) {
+                        // resend request
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
         .overlay {
             if viewModel.items.isEmpty {
@@ -36,15 +45,6 @@ struct TimelineView: View {
             } else {
                 LoadingView(isHideLoader: true)
             }
-        }
-        .onAppear{
-//            viewModel.restoreByUserDefault()
-//            viewModel.loadWithAlamofire { string in
-//                callback = string ?? ""
-//            }
-//            viewModel.storeDateToFile()
-//            viewModel.restoreDataFromFile()
-//            viewModel.loadWithURLSession()
         }
         .listStyle(.plain)
         .navigationBarTitle(navigationTitle)
