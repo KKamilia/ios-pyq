@@ -11,7 +11,7 @@ struct TimelineView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @ObservedObject var viewModel = TimelineViewModel()
     @State var callback: String = ""
-//    @ObservableObject var service = TimelineService()
+
     
     let navigationTitle = "Discovery"
 
@@ -44,7 +44,7 @@ struct TimelineView: View {
 //            }
 //            viewModel.storeDateToFile()
 //            viewModel.restoreDataFromFile()
-            viewModel.loadWithURLSession()
+//            viewModel.loadWithURLSession()
         }
         .listStyle(.plain)
         .navigationBarTitle(navigationTitle)

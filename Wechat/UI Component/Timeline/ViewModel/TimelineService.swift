@@ -10,11 +10,8 @@ import Combine
 import UIKit
 import Alamofire
 
-struct Repository: Codable {
-    let items: [TimelineContentItemModel]?
-}
-
 class TimelineService: ObservableObject {
+    
     private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     
     func loadWithURLSession(completion: @escaping ([TimelineContentItemModel]) -> ()) {
@@ -39,15 +36,40 @@ class TimelineService: ObservableObject {
             } else { return }
         }
     }
-//    
-//    func loadWithURLSessionPublisher() -> AnyPublisher<[TimelineContentItemModel], TimelineServiceError> {
-//        return Future { promise in
-//            promise(result)
-//        }.eraseToAnyPublisher()
-//    }
     
+    func loadWithURLSessionPublisher() -> AnyPublisher<[TimelineContentItemModel], TimelineServiceError> {
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: [TimelineContentItemModel].self, decoder: JSONDecoder())
+            .mapError { error -> TimelineServiceError in
+                switch error {
+                case is URLError:
+                    return .invaildUrl(error)
+                case is DecodingError:
+                    return .decodeFailed
+                default:
+                    return .unknown
+                }
+            }
+            .eraseToAnyPublisher()
+    }
     
 }
 
-
+enum TimelineServiceError: Error {
+    case decodeFailed
+    case invaildUrl(Error)
+    case unknown
+    
+    var description: String {
+        switch self {
+        case .decodeFailed:
+            return "数据解码失败"
+        case .invaildUrl(let error):
+            return "服务相应错误:\(error.localizedDescription)"
+        case .unknown:
+            return "未知错误"
+        }
+    }
+}
 

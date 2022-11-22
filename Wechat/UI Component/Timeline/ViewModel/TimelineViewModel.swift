@@ -10,7 +10,7 @@ import Combine
 import Alamofire
 import SwiftUI
 
-class TimelineViewModel: NSObject, ObservableObject {
+class TimelineViewModel: ObservableObject {
     
     @Published var items: [TimelineContentItemModel] = []
     @ObservedObject var service = TimelineService()
@@ -20,8 +20,16 @@ class TimelineViewModel: NSObject, ObservableObject {
     private let pathComponant = "items"
     private let localPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     
-    override init() {
-        
+    private var subscriptions: Set<AnyCancellable> = []
+    
+    init() {
+//        DispatchQueue.main.async {
+            service.loadWithURLSessionPublisher()
+                .sink(receiveCompletion: { completion in }, receiveValue: { value in
+                    self.items = value
+                })
+                .store(in: &self.subscriptions)
+//        }
     }
     
     func load() {
