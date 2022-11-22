@@ -27,6 +27,7 @@
 		59CCF5AB29254BB6001342AC /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF5AA29254BB6001342AC /* LikeView.swift */; };
 		59CCF5AD29255195001342AC /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF5AC29255195001342AC /* CommentView.swift */; };
 		59EE9950292A7CD3004043F6 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE994F292A7CD3004043F6 /* LoadingImageView.swift */; };
+		59EE9952292B67EF004043F6 /* TimelineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EE9951292B67EF004043F6 /* TimelineService.swift */; };
 		867589CFF8E2A24016751940 /* libPods-UI Component.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC5034E45B1E1F1DC1B35CC /* libPods-UI Component.a */; };
 		8EDB1A80279A80F7001600B5 /* UI_ComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB1A7F279A80F7001600B5 /* UI_ComponentApp.swift */; };
 		8EDB1A82279A80F7001600B5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB1A81279A80F7001600B5 /* HomeView.swift */; };
@@ -63,6 +64,7 @@
 		59CCF5AA29254BB6001342AC /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
 		59CCF5AC29255195001342AC /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		59EE994F292A7CD3004043F6 /* LoadingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
+		59EE9951292B67EF004043F6 /* TimelineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineService.swift; sourceTree = "<group>"; };
 		8EDB1A7C279A80F7001600B5 /* UI Component.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UI Component.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDB1A7F279A80F7001600B5 /* UI_ComponentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI_ComponentApp.swift; sourceTree = "<group>"; };
 		8EDB1A81279A80F7001600B5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				59CCF5A82925448A001342AC /* TimelineViewModel.swift */,
+				59EE9951292B67EF004043F6 /* TimelineService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				59C4BDAB291CC02C00E1644C /* ProfileViewModifier.swift in Sources */,
 				8EE3807C279A8BB200A19AE4 /* TimelineView.swift in Sources */,
 				B213227828C9999B00281249 /* SettingsView.swift in Sources */,
+				59EE9952292B67EF004043F6 /* TimelineService.swift in Sources */,
 				590BD77A291CEF0A00663152 /* SettingHorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

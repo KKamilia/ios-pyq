@@ -13,10 +13,12 @@ import SwiftUI
 class TimelineViewModel: NSObject, ObservableObject {
     
     @Published var items: [TimelineContentItemModel] = []
+    @ObservedObject var service = TimelineService()
     
     private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     private let userDefaultKey = "ITEMS"
-    private let pathComponant = "items.plist"
+    private let pathComponant = "items"
+    private let localPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     
     override init() {
         
@@ -91,53 +93,31 @@ class TimelineViewModel: NSObject, ObservableObject {
         }
     }
     
-    func loadWithURLSession( _ resultCallback: @escaping(String?) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) {data, _, error in
-            DispatchQueue.main.async {
-                if let `data` = data {
-                    let i = try! JSONDecoder().decode([TimelineContentItemModel].self, from: data)
-                    self.items = i
-                } else {
-                    resultCallback(nil)
-                }
-            }
+    func loadWithURLSession() {
+        service.loadWithURLSession { item in
+            self.items = item
         }
-        task.resume()
     }
     
-    func loadWithAlamofire( _ resultCallback: @escaping(String?) -> Void) {
-        let decoder = JSONDecoder()
-        
-        AF.request(url).response { res in
-            if let `data` = res.data {
-                let x: [TimelineContentItemModel] = try! decoder.decode([TimelineContentItemModel].self, from: data)
-                self.items = x
-            } else {
-                resultCallback(nil)
-            }
+    func loadWithAlamofire( ) {
+        service.loadWithAlamofire { item in
+            self.items = item
         }
     }
     
     func storeDataToFileByUserDefaults() {
-        loadWithAlamofire { s in
-            let _: String = s ?? ""
-        }
+        loadWithAlamofire()
         guard let data = try? PropertyListEncoder().encode(items)
-        else {
-            return
-        }
+        else { return }
         UserDefaults.standard.set(data, forKey: userDefaultKey)
     }
     
     func restoreByUserDefault() {
+        // todo: merge guard let and remove else return
         guard let data = UserDefaults.standard.data(forKey: userDefaultKey)
-        else {
-            return
-        }
+        else { return }
         guard let item = try? PropertyListDecoder().decode([TimelineContentItemModel].self, from: data)
-        else {
-            return
-        }
+        else { return }
         items = item
     }
     
@@ -145,32 +125,22 @@ class TimelineViewModel: NSObject, ObservableObject {
         DispatchQueue.global().async {
             AF.request(self.url).response { res in
                 if let `data` = res.data {
-                    guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(self.pathComponant)
-                    else {
-                        return
-                    }
-                    do {
-                        try? data.write(to: path)
-                    }
+                    guard let path = self.localPath.first?.appendingPathComponent(self.pathComponant)
+                    else { return }
+                    do { try? data.write(to: path) }
                 }
             }
         }
     }
     
     func restoreDataFromFile() {
-        guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(pathComponant)
-        else {
-            return
-        }
+        // todo: merge guard let and remove else return
+        guard let path = localPath.first?.appendingPathComponent(pathComponant)
+        else { return }
         do {
-            guard let item = try? Data(contentsOf: path)
-            else {
-                return
-            }
+            guard let item = try? Data(contentsOf: path) else { return }
             guard let i = try? JSONDecoder().decode([TimelineContentItemModel].self, from: item)
-            else {
-                return
-            }
+            else { return }
             items = i
         }
     }

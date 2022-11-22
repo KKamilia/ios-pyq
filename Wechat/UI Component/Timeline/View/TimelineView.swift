@@ -11,9 +11,10 @@ struct TimelineView: View {
     @EnvironmentObject var homeViewModel: HomeViewModel
     @ObservedObject var viewModel = TimelineViewModel()
     @State var callback: String = ""
+//    @ObservableObject var service = TimelineService()
     
     let navigationTitle = "Discovery"
-    
+
     var body: some View {
         List {
             TimeLineHeaderView(avatar: homeViewModel.userModel.avatar, username: homeViewModel.userModel.nickname)
@@ -41,8 +42,9 @@ struct TimelineView: View {
 //            viewModel.loadWithAlamofire { string in
 //                callback = string ?? ""
 //            }
-            viewModel.storeDateToFile()
-            viewModel.restoreDataFromFile()
+//            viewModel.storeDateToFile()
+//            viewModel.restoreDataFromFile()
+            viewModel.loadWithURLSession()
         }
         .listStyle(.plain)
         .navigationBarTitle(navigationTitle)
