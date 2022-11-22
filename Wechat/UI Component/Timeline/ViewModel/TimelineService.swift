@@ -11,11 +11,12 @@ import UIKit
 import Alamofire
 
 class TimelineService: ObservableObject {
+    private let url = "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets"
     
-    private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
-    
+    //    private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     func loadWithURLSession(completion: @escaping ([TimelineContentItemModel]) -> ()) {
-        let task = URLSession.shared.dataTask(with: url) {data, _, error in
+        guard let urlPath = URL(string: url) else { return }
+        let task = URLSession.shared.dataTask(with: urlPath) {data, _, error in
             DispatchQueue.main.async {
                 if let `data` = data {
                     let result = try! JSONDecoder().decode([TimelineContentItemModel].self, from: data)
@@ -27,17 +28,19 @@ class TimelineService: ObservableObject {
     }
     
     func loadWithAlamofire(completion: @escaping ([TimelineContentItemModel]) -> ()) {
-        let decoder = JSONDecoder()
-        
-        AF.request(url).response { res in
-            if let `data` = res.data {
-                let result: [TimelineContentItemModel] = try! decoder.decode([TimelineContentItemModel].self, from: data)
-                completion(result)
-            } else { return }
-        }
+        if let urlPath = URL(string: url) {
+            AF.request(urlPath).response { res in
+                if let `data` = res.data {
+                    let result: [TimelineContentItemModel] = try! JSONDecoder().decode([TimelineContentItemModel].self, from: data)
+                    completion(result)
+                } else { return }
+            }
+        } else { return }
     }
     
     func loadWithURLSessionPublisher() -> AnyPublisher<[TimelineContentItemModel], TimelineServiceError> {
+//        guard let urlPath = URL(string: url) else {Fail(error: })}
+        let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
             .decode(type: [TimelineContentItemModel].self, decoder: JSONDecoder())
@@ -53,7 +56,6 @@ class TimelineService: ObservableObject {
             }
             .eraseToAnyPublisher()
     }
-    
 }
 
 enum TimelineServiceError: Error {
