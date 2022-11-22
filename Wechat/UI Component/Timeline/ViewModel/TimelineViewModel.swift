@@ -23,13 +23,13 @@ class TimelineViewModel: ObservableObject {
     private var subscriptions: Set<AnyCancellable> = []
     
     init() {
-//        DispatchQueue.main.async {
-            service.loadWithURLSessionPublisher()
-                .sink(receiveCompletion: { completion in }, receiveValue: { value in
-                    self.items = value
-                })
-                .store(in: &self.subscriptions)
-//        }
+        service.loadWithURLSessionPublisher()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+            }, receiveValue: { value in
+                self.items = value
+            })
+            .store(in: &self.subscriptions)
     }
     
     func load() {
