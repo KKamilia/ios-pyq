@@ -21,43 +21,51 @@ class TimelineViewModel: ObservableObject {
     let itemsForCurrentValueSubject: CurrentValueSubject<[TimelineContentItemModel], TimelineServiceError> = .init([])
     let itemsForPassthroughSubject: PassthroughSubject<[TimelineContentItemModel], TimelineServiceError> = .init()
     
+    let combine:PassthroughSubject<(UserInfoModel, [TimelineContentItemModel]),TimelineServiceError > = .init()
+    
     private let userDefaultKey = "ITEMS"
     private let pathComponant = "items"
     private let localPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    
     private var subscriptions: Set<AnyCancellable> = .init()
     
-    init() {
-        loadData()
-    }
+    init() {}
     
-    func loadWithURLSessionPublisher() {
+    func loadUserInfoAndTimeline() {
+        let userInfoRequest = service.loadUserInfo()
+        let timelineRequest = service.loadWithURLSessionPublisher()
         
+        Publishers.Zip(userInfoRequest, timelineRequest)
+            .sink(receiveCompletion: { [weak self] (completion) in
+                self?.combine.send(completion: completion)
+            }, receiveValue: { [ weak self ] (userInfoValue, timelineContent) in
+                self?.combine.send((userInfoValue, timelineContent))
+            })
+            .store(in: &subscriptions)
     }
     
     func loadData() {
         service.loadWithURLSessionPublisher()
             .receive(on: DispatchQueue.main)
+            .catch{_ in self.service.loadWithURLSessionPublisher()
+            }
+            .retry(3)
             .sink(receiveCompletion: { [weak self] completion in
                 self?.itemsForCurrentValueSubject.send(completion: completion)
                 self?.itemsForPassthroughSubject.send(completion: completion)
                 switch completion {
                 case .finished:
-                    self?.itemsForCurrentValueSubject.send(completion: completion)
-                    self?.itemsForPassthroughSubject.send(completion: completion)
                     print("OK")
                 case .failure(let error):
                     self?.errorMessage = error.description
                     self?.presentAlert = true
                 }
-            }, receiveValue: { [weak self] completion in
-                self?.items = completion
-                self?.itemsForPassthroughSubject.send(completion)
-                self?.itemsForCurrentValueSubject.send(completion)
-            })
-            .store(in: &self.subscriptions)
+            }, receiveValue: { [weak self] value in
+                self?.items = value
+                self?.itemsForPassthroughSubject.send(value)
+                self?.itemsForCurrentValueSubject.send(value)
+            }).store(in: &self.subscriptions)
+        
     }
-    
     
     func load() {
         items = [

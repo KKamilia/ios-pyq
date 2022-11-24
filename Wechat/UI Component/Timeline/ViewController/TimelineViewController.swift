@@ -20,21 +20,18 @@ class TimelineViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subscribeRequest()
         configTextView()
+        userInfoAndTimelineContent()
+        requestData()
     }
     
-    func subscribeRequest() {
+    func requestData() {
+        viewModel.loadUserInfoAndTimeline()
+    }
+    
+    func subscribeTimelineRequest() {
         viewModel
             .itemsForCurrentValueSubject
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-            }, receiveValue: { value in
-            })
-            .store(in: &subscriptions)
-        
-        viewModel
-            .itemsForPassthroughSubject
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
@@ -46,6 +43,38 @@ class TimelineViewController: UIViewController {
                 }
             }, receiveValue: { [weak self] value in
                 self?.itemView.text = value.toJSONString()
+            })
+            .store(in: &subscriptions)
+        //                viewModel
+        //                    .itemsForPassthroughSubject
+        //                    .receive(on: DispatchQueue.main)
+        //                    .sink(receiveCompletion: { [weak self] completion in
+        //                        switch completion {
+        //                        case .finished:
+        //                            print("OK")
+        //                        case .failure(let error):
+        //                            self?.showErrorMessage(error.description)
+        //                            print(completion)
+        //                        }
+        //                    }, receiveValue: { [weak self] value in
+        //                        self?.itemView.text = value.toJSONString()
+        //                    })
+        //                    .store(in: &subscriptions)
+    }
+    
+    func userInfoAndTimelineContent() {
+        viewModel.combine
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    print("OK")
+                case .failure(let error):
+                    self?.showErrorMessage(error.description)
+                    print(completion)
+                }
+            }, receiveValue: { [weak self] value in
+                self?.itemView.text = value.0.nick + "\n" + value.1.toJSONString()
             })
             .store(in: &subscriptions)
     }
@@ -71,4 +100,3 @@ public extension Encodable {
         return jsonStr
     }
 }
-

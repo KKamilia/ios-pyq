@@ -54,7 +54,7 @@ class TimelineService: ObservableObject {
             .eraseToAnyPublisher()
     }
     
-    func loadUserInfoAndTimelines() -> AnyPublisher<[UserInfoModel], TimelineServiceError> {
+    func loadUserInfo() -> AnyPublisher<UserInfoModel, TimelineServiceError> {
         guard let url = URL(string: userInfoUrl) else {
             return Fail(error: TimelineServiceError.invaildUrl)
                 .eraseToAnyPublisher()
@@ -63,7 +63,7 @@ class TimelineService: ObservableObject {
             .shared
             .dataTaskPublisher(for: url)
             .map(\.data)
-            .decode(type: [UserInfoModel].self, decoder: JSONDecoder())
+            .decode(type: UserInfoModel.self, decoder: JSONDecoder())
             .mapError{ error in
                 return TimelineServiceError.serverDisconncet(error)
             }
@@ -85,4 +85,3 @@ enum TimelineServiceError: Error {
         }
     }
 }
-

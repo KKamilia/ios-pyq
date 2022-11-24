@@ -14,13 +14,9 @@ struct UserInfoModel: Decodable {
     let username: String
     
     enum CodingKeys: String, CodingKey {
-        case profileImage = "profile-iamge"
-        case avatar
-        case nick
-        case username
+        case profileImage = "profile-image"
+        case avatar = "avatar"
+        case nick = "nick"
+        case username = "username"
     }
 }
-
-
-
-
