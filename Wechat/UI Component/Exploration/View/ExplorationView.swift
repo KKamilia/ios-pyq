@@ -13,6 +13,7 @@ struct ExplorationView: View {
     let iconSpace = CGFloat(20)
     let iconColor = Color.blue
     let moment = "朋友圈"
+    let timelineViewController = "朋友圈ViewController"
     let title = "Discovery"
     
     var body: some View {
@@ -23,6 +24,8 @@ struct ExplorationView: View {
                         switch (i.title) {
                         case moment:
                             TimelineView()
+                        case timelineViewController:
+                           TimelineViewControllerRepresentable()
                         default:
                             EmptyView()
                         }

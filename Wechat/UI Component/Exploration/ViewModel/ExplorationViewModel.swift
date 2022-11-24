@@ -18,6 +18,7 @@ class ExplorationViewModel: ObservableObject {
     func load() {
         explorationList.append(contentsOf:  [
             ExplorationModel(icon: "circle.circle.fill", title: "朋友圈"),
+            ExplorationModel(icon: "circle.circle.fill", title: "朋友圈ViewController"),
             ExplorationModel(icon: "gamecontroller.fill", title: "游戏"),
             ExplorationModel(icon: "link.circle", title: "小程序")
         ])

@@ -17,36 +17,47 @@ class TimelineViewModel: ObservableObject {
     @Published var presentAlert: Bool = false
     @Published var errorMessage: String = "nil"
     
+    
+    let itemsForCurrentValueSubject: CurrentValueSubject<[TimelineContentItemModel], TimelineServiceError> = .init([])
+    let itemsForPassthroughSubject: PassthroughSubject<[TimelineContentItemModel], TimelineServiceError> = .init()
+    
+    
+    
     private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     private let userDefaultKey = "ITEMS"
     private let pathComponant = "items"
     private let localPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     
-    private var subscriptions: Set<AnyCancellable> = []
+    private var subscriptions: Set<AnyCancellable> = .init()
     
     init() {
-        
+        loadData()
     }
     
     func loadData() {
         service.loadWithURLSessionPublisher()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
+            .sink(receiveCompletion: { [weak self] completion in
+                self?.itemsForCurrentValueSubject.send(completion: completion)
+                self?.itemsForPassthroughSubject.send(completion: completion)
                 switch completion {
                 case .finished:
-                    print("succeed")
-                    print(self.presentAlert)
+                    self?.itemsForCurrentValueSubject.send(completion: completion)
+                    self?.itemsForPassthroughSubject.send(completion: completion)
+                    print("OK")
                 case .failure(let error):
-                    self.errorMessage = error.description
-                    self.presentAlert = true
-                    print("fail")
-                    print(self.presentAlert)
+                    self?.errorMessage = error.description
+                    self?.presentAlert = true
                 }
-            }, receiveValue: { completion in
-                self.items = completion
+            }, receiveValue: { [weak self] completion in
+                self?.items = completion
+                self?.itemsForPassthroughSubject.send(completion)
+                self?.itemsForCurrentValueSubject.send(completion)
             })
             .store(in: &self.subscriptions)
+        
     }
+    
     
     func load() {
         items = [
