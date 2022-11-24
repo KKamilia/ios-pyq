@@ -12,8 +12,7 @@ import Alamofire
 
 class TimelineService: ObservableObject {
     private let url = "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets"
-    
-    //    private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
+    private let userInfoUrl = "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith"
     func loadWithURLSession(completion: @escaping ([TimelineContentItemModel]) -> ()) {
         guard let urlPath = URL(string: url) else { return }
         let task = URLSession.shared.dataTask(with: urlPath) {data, _, error in
@@ -39,38 +38,50 @@ class TimelineService: ObservableObject {
     }
     
     func loadWithURLSessionPublisher() -> AnyPublisher<[TimelineContentItemModel], TimelineServiceError> {
-//        guard let urlPath = URL(string: url) else {Fail(error: })}
-        let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
-        return URLSession.shared.dataTaskPublisher(for: url)
+        guard let urlPath = URL(string: url) else {
+            return Fail(error: TimelineServiceError.invaildUrl)
+                .eraseToAnyPublisher()
+        }
+        return URLSession
+            .shared
+            .dataTaskPublisher(for: urlPath)
             .map(\.data)
             .decode(type: [TimelineContentItemModel].self, decoder: JSONDecoder())
-            .mapError { error -> TimelineServiceError in
-                switch error {
-                case is URLError:
-                    return .invaildUrl(error)
-                case is DecodingError:
-                    return .decodeFailed
-                default:
-                    return .unknown
-                }
+            .mapError { error in
+                return TimelineServiceError.serverDisconncet(error)
             }
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    func loadUserInfoAndTimelines() -> AnyPublisher<[UserInfoModel], TimelineServiceError> {
+        guard let url = URL(string: userInfoUrl) else {
+            return Fail(error: TimelineServiceError.invaildUrl)
+                .eraseToAnyPublisher()
+        }
+        return URLSession
+            .shared
+            .dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: [UserInfoModel].self, decoder: JSONDecoder())
+            .mapError{ error in
+                return TimelineServiceError.serverDisconncet(error)
+            }
+            .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
 }
 
 enum TimelineServiceError: Error {
-    case decodeFailed
-    case invaildUrl(Error)
-    case unknown
+    case invaildUrl
+    case serverDisconncet(Error)
     
     var description: String {
         switch self {
-        case .decodeFailed:
-            return "数据解码失败"
-        case .invaildUrl(let error):
+        case .invaildUrl:
+            return "无效URL路径"
+        case .serverDisconncet(let error):
             return "服务相应错误:\(error.localizedDescription)"
-        case .unknown:
-            return "未知错误"
         }
     }
 }
