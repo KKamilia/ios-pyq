@@ -17,13 +17,10 @@ class TimelineViewModel: ObservableObject {
     @Published var presentAlert: Bool = false
     @Published var errorMessage: String = "nil"
     
-    
+    let url = "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets"
     let itemsForCurrentValueSubject: CurrentValueSubject<[TimelineContentItemModel], TimelineServiceError> = .init([])
     let itemsForPassthroughSubject: PassthroughSubject<[TimelineContentItemModel], TimelineServiceError> = .init()
     
-    
-    
-    private let url = URL(string: "https://thoughtworks-mobile-2018.herokuapp.com/user/jsmith/tweets")!
     private let userDefaultKey = "ITEMS"
     private let pathComponant = "items"
     private let localPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -32,6 +29,10 @@ class TimelineViewModel: ObservableObject {
     
     init() {
         loadData()
+    }
+    
+    func loadWithURLSessionPublisher() {
+        
     }
     
     func loadData() {
@@ -55,7 +56,6 @@ class TimelineViewModel: ObservableObject {
                 self?.itemsForCurrentValueSubject.send(completion)
             })
             .store(in: &self.subscriptions)
-        
     }
     
     
@@ -157,8 +157,9 @@ class TimelineViewModel: ObservableObject {
     }
     
     func storeDateToFile() {
+        guard let urlPath = URL(string: url) else { return }
         DispatchQueue.global().async {
-            AF.request(self.url).response { res in
+            AF.request(urlPath).response { res in
                 if let `data` = res.data {
                     guard let path = self.localPath.first?.appendingPathComponent(self.pathComponant)
                     else { return }
@@ -169,9 +170,7 @@ class TimelineViewModel: ObservableObject {
     }
     
     func restoreDataFromFile() {
-        // todo: merge guard let and remove else return
-        guard let path = localPath.first?.appendingPathComponent(pathComponant)
-        else { return }
+        guard let path = localPath.first?.appendingPathComponent(pathComponant) else { return }
         do {
             guard let item = try? Data(contentsOf: path) else { return }
             guard let i = try? JSONDecoder().decode([TimelineContentItemModel].self, from: item)
