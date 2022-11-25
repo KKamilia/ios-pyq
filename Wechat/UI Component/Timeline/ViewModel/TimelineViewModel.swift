@@ -61,10 +61,24 @@ class TimelineViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] value in
                 self?.items = value
-                self?.itemsForPassthroughSubject.send(value)
-                self?.itemsForCurrentValueSubject.send(value)
+                self?.filterItem(value)
             }).store(in: &self.subscriptions)
-        
+    }
+    
+    func filterItem(_ value: [TimelineContentItemModel]) {
+        _ = value
+            .publisher
+            .filter { item in
+                item.content != nil && item.sender != nil
+            }
+            .reduce([]) { acc, item in
+                acc + [item]
+            }
+            .sink { processedItem in
+                self.items = processedItem
+                self.itemsForPassthroughSubject.send(processedItem)
+                self.itemsForCurrentValueSubject.send(processedItem)
+            }
     }
     
     func load() {
@@ -156,7 +170,6 @@ class TimelineViewModel: ObservableObject {
     }
     
     func restoreByUserDefault() {
-        // todo: merge guard let and remove else return
         guard let data = UserDefaults.standard.data(forKey: userDefaultKey)
         else { return }
         guard let item = try? PropertyListDecoder().decode([TimelineContentItemModel].self, from: data)
